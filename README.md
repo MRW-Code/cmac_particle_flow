@@ -1,6 +1,6 @@
 # cmac_particle_flow
 
-Populate the images folder and the external test set, make sure the rest are present but empty. \
+Populate/Make the "images" folder and the "external_test_set", make sure the rest are present but empty. \
 Code will empty for you so long as they are present. 
 
 Train a model: \
