@@ -1,7 +1,8 @@
 # cmac_particle_flow
 
 Populate/Make the "images" folder and the "external_test_set", make sure the rest are present but empty. \
-Code will empty for you so long as they are present. 
+Code will empty files as needed for you so long as they are present. \
+File names as shown and appear in main "cmac_particle_flow" dir. 
 
 Train a model: \
 Run ttv_main.py and select the split index and split_factor. \
