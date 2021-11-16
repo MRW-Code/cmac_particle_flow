@@ -10,8 +10,8 @@ class ImageAugmentor(ImageSplitter):
     class does the augmenting on the already split images.
     '''
 
-    def __init__(self, path_to_data, split_number, save_augs, save_raw):
-        ImageSplitter.__init__(self,path_to_data, split_number)
+    def __init__(self, path_to_data, split_number, split_factor, save_augs, save_raw):
+        ImageSplitter.__init__(self,path_to_data, split_number, split_factor)
         self.do_splitting()
         self.memory_cleaner()
         self.save_augs = save_augs

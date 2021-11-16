@@ -5,8 +5,9 @@ from sklearn.metrics import accuracy_score
 
 learner = '/home/matthew/PycharmProjects/cmac_particle_flow/' \
           'code_saves/trained_model_200.pkl'
+split_factor = 2
 
-inf = Inference(learner)
+inf = Inference(learner, split_factor)
 true, preds = inf.infer()
 acc = accuracy_score(true, preds)
 print(acc)

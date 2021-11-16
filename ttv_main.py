@@ -1,13 +1,22 @@
 import os
 os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 import torch
+import glob
 torch.cuda.empty_cache()
 
 from models.fastai_prep import FastAIPrep
 from fastai.vision.all import *
 from fastai.distributed import *
 
-prep = FastAIPrep('./images', 0, './aug_images', './split_test_images')
+def empty_file(path):
+    files = glob.glob(path + '/*')
+    for file in files:
+        os.remove(file)
+
+empty_file('./aug_images')
+empty_file('./split_test_images')
+
+prep = FastAIPrep('./images', 0, 2, './aug_images', './split_test_images')
 prep.check_test_train_data()
 df = prep.get_fastai_df()
 print('done')
