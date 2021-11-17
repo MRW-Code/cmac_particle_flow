@@ -1,6 +1,7 @@
 # cmac_particle_flow
 
-Populate/Make the "aug_images" folder and the "external_test_set", make sure the rest are present but empty. \
+Populate the "images" and "external_test_set" as needed. \
+Make empty dir for "aug_images" folder and the "split_test_images", make sure the rest are present but empty. \
 Code will empty files as needed for you so long as they are present. \
 File names as shown and appear in main "cmac_particle_flow" dir. \
 May need to add the empty directories manually. 
