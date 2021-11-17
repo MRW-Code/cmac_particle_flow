@@ -60,5 +60,5 @@ interp.plot_confusion_matrix()
 plt.savefig('./conf_mtrx_200')
 
 
-# need to load the test set seperatly if it all works ok.
+# need to load the test set separately if it all works ok.
 # Also make the image dirs empty if doing the cv shuffle
