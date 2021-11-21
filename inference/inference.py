@@ -10,7 +10,7 @@ class Inference(FastAIPrep):
     def __init__(self, learner, split_factor):
         self.split_factor = split_factor
         self.test_pths = self.get_paths()
-        self.learner = load_learner(learner)
+        self.learner = load_learner(learner, cpu=False)
 
     def get_paths(self):
         test_pths = get_image_files(os.getcwd() + '/external_test_set/')
