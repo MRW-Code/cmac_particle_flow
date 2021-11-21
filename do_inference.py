@@ -3,8 +3,7 @@ import os
 from sklearn.metrics import accuracy_score
 
 
-learner = '/home/matthew/PycharmProjects/cmac_particle_flow/' \
-          'code_saves/trained_model_200.pkl'
+learner = './code_saves/trained_model_100.pkl'
 split_factor = 2
 
 inf = Inference(learner, split_factor)
