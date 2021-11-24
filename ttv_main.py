@@ -18,7 +18,7 @@ empty_file('./split_test_images')
 
 # change the second number to the appropriate split index
 
-prep = FastAIPrep('./images', 0, 2, './aug_images', './split_test_images')
+prep = FastAIPrep('./images', 0, 2, './aug_images', './split_test_images', False)
 prep.check_test_train_data()
 df = prep.get_fastai_df()
 print('done')

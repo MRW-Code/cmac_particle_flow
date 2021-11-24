@@ -4,6 +4,7 @@ import tqdm
 import gc
 import numpy as np
 from PIL.Image import fromarray
+import concurrent.futures
 
 class ImageAugmentor(ImageSplitter):
     '''
@@ -98,8 +99,35 @@ class ImageAugmentor(ImageSplitter):
             sv_img.save(file_name)
             count = count + 1
 
-
     def get_model_images(self):
         self.do_augs()
         self.save_test_set()
+
+
+
+
+    def do_aug_process(self, img, idx):
+        count = 0
+        self.img = img
+        rotated = self.rotating(6)
+        for rot in rotated:
+            flipped = self.flipping(rot)
+            for flip in flipped:
+                if self.save_augs is not None:
+                    count = count + 1
+                    filename = str(self.save_augs) +\
+                               '/' + str(self.raw_train[idx][1]) +\
+                               str(count) + '.jpg'
+                    sv_img = fromarray(flip)
+                    sv_img.save(filename)
+                else:
+                    AttributeError('no save path provided for aug_images')
+                    # print(count)
+
+    def do_augs_multi(self):
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            executor.map(self.do_aug_process,
+                         [self.raw_train[x][0] for x in tqdm.tqdm(range(len(self.raw_train)))],
+                         [np.arange(0, len(self.raw_train),1)[y] for y in range(len(self.raw_train))])
+
 

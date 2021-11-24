@@ -5,17 +5,22 @@ import re
 
 class FastAIPrep(ImageAugmentor):
 
-    def __init__(self, data_path, split_idx, split_factor, save_train, save_test):
+    def __init__(self, data_path, split_idx, split_factor, save_train, save_test, multi):
         super().__init__(data_path, split_idx, split_factor, save_train, save_test)
         self.train_save_path = save_train
         self.test_save_path = save_test
+        self.multi = multi
 
     def check_train_dir(self):
         print(self.train_save_path)
         print(len(os.listdir(self.train_save_path)))
         if len(os.listdir(self.train_save_path)) == 0:
-            self.do_augs()
-            print('loaded train images')
+            if self.multi == True:
+                self.do_augs_multi()
+                print('loaded train images')
+            else:
+                self.do_augs()
+                print('loaded train images')
         else:
             print('Using pre-saved train images')
 
