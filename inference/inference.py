@@ -5,6 +5,7 @@ import tqdm
 from statistics import mode
 from models.fastai_prep import FastAIPrep
 
+
 class Inference(FastAIPrep):
 
     def __init__(self, learner, split_factor):
@@ -33,8 +34,9 @@ class Inference(FastAIPrep):
         for i in range(len(points_x) - 1):
             for j in range(len(points_y) - 1):
                 crops.append(img[points_x[i]:points_x[i] + points_x[1], points_y[j]:points_y[j] + points_y[1]])
-        return torch.tensor(crops)
 
+        crops = [torch.tensor(crop).cpu() for crop in crops]
+        return crops
 
     # def cropping(self, img, num_quadrants):
     #     x = img.shape[0]
@@ -56,19 +58,21 @@ class Inference(FastAIPrep):
 
     def majority_vote(self, stack):
         vote = []
+
         for img in stack:
-            vote.append(self.learner.predict(img))
-        return mode([i[0] for i in vote])
+            pred = self.learner.predict(img)
+            vote.append(pred)
+        ans = mode([i[0] for i in vote])
+        return ans
 
     def infer(self):
         true_labels = []
         pred_labels = []
         for pth in tqdm.tqdm(self.test_pths):
-            img_raw = cv2.imread(str(pth))
+            img_raw = torch.tensor(cv2.imread(str(pth))).to('cuda')
             true_labels.append(pth.parent.name)
             pred_labels.append(self.majority_vote(self.cropping(img_raw)))
         return true_labels, pred_labels
-
 
 
 
