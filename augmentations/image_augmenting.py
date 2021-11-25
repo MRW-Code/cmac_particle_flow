@@ -5,6 +5,8 @@ import gc
 import numpy as np
 from PIL.Image import fromarray
 import concurrent.futures
+import multiprocessing
+from multiprocessing import Process
 
 class ImageAugmentor(ImageSplitter):
     '''
@@ -120,14 +122,20 @@ class ImageAugmentor(ImageSplitter):
                                str(count) + '.jpg'
                     sv_img = fromarray(flip)
                     sv_img.save(filename)
+                    print('done {} / {}'.format(count, len(self.raw_train)))
                 else:
                     AttributeError('no save path provided for aug_images')
                     # print(count)
 
-    def do_augs_multi(self):
-        with concurrent.futures.ThreadPoolExecutor() as executor:
-            executor.map(self.do_aug_process,
-                         [self.raw_train[x][0] for x in tqdm.tqdm(range(len(self.raw_train)))],
-                         [np.arange(0, len(self.raw_train),1)[y] for y in range(len(self.raw_train))])
+    # def do_augs_multi(self):
+    #     with concurrent.futures.ProcessPoolExecutor(max_workers=8) as executor:
+    #         executor.map(self.do_aug_process,
+    #                      [self.raw_train[x][0] for x in range(len(self.raw_train))],
+    #                      [np.arange(0, len(self.raw_train),1)[y] for y in range(len(self.raw_train))])
 
+    def do_augs_multi(self):
+        with concurrent.futures.ProcessPoolExecutor() as executor:
+            executor.map(self.do_aug_process,
+                                 [self.raw_train[x][0] for x in range(len(self.raw_train))],
+                                 [np.arange(0, len(self.raw_train),1)[y] for y in range(len(self.raw_train))])
 
