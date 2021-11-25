@@ -7,6 +7,8 @@ from PIL.Image import fromarray
 import concurrent.futures
 import multiprocessing
 from multiprocessing import Process
+from itertools import repeat
+import threading
 
 class ImageAugmentor(ImageSplitter):
     '''
@@ -108,7 +110,34 @@ class ImageAugmentor(ImageSplitter):
 
 
 
-    def do_aug_process(self, img, idx):
+    # def do_aug_process(self, img, idx):
+    #     count = 0
+    #     self.img = img
+    #     rotated = self.rotating(6)
+    #     for rot in rotated:
+    #         flipped = self.flipping(rot)
+    #         for flip in flipped:
+    #             if self.save_augs is not None:
+    #                 count = count + 1
+    #                 filename = str(self.save_augs) +\
+    #                            '/' + str(self.raw_train[idx][1]) +\
+    #                            str(count) + '.jpg'
+    #                 sv_img = fromarray(flip)
+    #                 sv_img.save(filename)
+    #                 # print('done {} / {}'.format(count, len(self.raw_train)))
+    #             else:
+    #                 AttributeError('no save path provided for aug_images')
+    #                 # print(count)
+
+    # def do_augs_multi(self):
+    #     with concurrent.futures.ProcessPoolExecutor(max_workers=8) as executor:
+    #         executor.map(self.do_aug_process,
+    #                      [self.raw_train[x][0] for x in range(len(self.raw_train))],
+    #                      [np.arange(0, len(self.raw_train),1)[y] for y in range(len(self.raw_train))])
+
+
+    def do_aug_process(self, data):
+        img, idx = data
         count = 0
         self.img = img
         rotated = self.rotating(6)
@@ -119,23 +148,29 @@ class ImageAugmentor(ImageSplitter):
                     count = count + 1
                     filename = str(self.save_augs) +\
                                '/' + str(self.raw_train[idx][1]) +\
-                               str(count) + '.jpg'
+                               str(idx) + '_' + str(count)  + '.jpg'
                     sv_img = fromarray(flip)
                     sv_img.save(filename)
-                    print('done {} / {}'.format(count, len(self.raw_train)))
+                    # print('done {} / {}'.format(count, len(self.raw_train)))
                 else:
                     AttributeError('no save path provided for aug_images')
                     # print(count)
 
+
     # def do_augs_multi(self):
-    #     with concurrent.futures.ProcessPoolExecutor(max_workers=8) as executor:
-    #         executor.map(self.do_aug_process,
-    #                      [self.raw_train[x][0] for x in range(len(self.raw_train))],
-    #                      [np.arange(0, len(self.raw_train),1)[y] for y in range(len(self.raw_train))])
+    #     data = zip([self.raw_train[x][0] for x in range(len(self.raw_train))],
+    #                [np.arange(0, len(self.raw_train), 1)[y] for y in range(len(self.raw_train))]
+    #                )
+    #     with concurrent.futures.ThreadPoolExecutor(max_workers=8) as executor:
+    #         executor.map(self.do_aug_process, data)
 
     def do_augs_multi(self):
-        with concurrent.futures.ProcessPoolExecutor() as executor:
-            executor.map(self.do_aug_process,
-                                 [self.raw_train[x][0] for x in range(len(self.raw_train))],
-                                 [np.arange(0, len(self.raw_train),1)[y] for y in range(len(self.raw_train))])
+        data = zip([self.raw_train[x][0] for x in range(len(self.raw_train))],
+                   [np.arange(0, len(self.raw_train), 1)[y] for y in range(len(self.raw_train))]
+                   )
+        for dt in data:
+            p = multiprocessing.Process(target=self.do_aug_process, args=(dt,))
+            p.start()
+
+
 
