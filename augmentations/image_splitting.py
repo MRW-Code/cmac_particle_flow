@@ -75,3 +75,43 @@ class ImageSplitter():
 
         self.raw_test = list(zip(self.all_raw, labels_raw))
         self.raw_train = list(zip(self.all_crops, labels_cropped))
+
+
+    def do_oversampled_splitting(self, num_free, num_co, num_ez):
+        '''
+        calls the cropping function with the split allocation and oversampling .
+        :return: zip of images and labels, seperate test/train sets
+        '''
+        self.all_raw = []
+        self.all_crops = []
+        labels_raw = []
+        labels_cropped = []
+        for paths in self.data_path.iterdir():
+            for path in tqdm.tqdm(paths.iterdir()):
+                label = path.parent.name
+                self.open_img(str(path))
+                crops = self.cropping()
+                self.pick_split(crops)
+                # print(self.cropped_image)
+                # print(self.raw)
+                self.all_raw.append(self.unchanged)
+                labels_raw.append(label)
+                for i in range(len(self.cropped_image)):
+                    if label == 'cohesive':
+                        for x in range(num_co):
+                            labels_cropped.append(label)
+                            self.all_crops.append(self.cropped_image[i])
+                    elif label == 'freeflowing':
+                        for y in range(num_free):
+                            labels_cropped.append(label)
+                            self.all_crops.append(self.cropped_image[i])
+                    elif label == 'easyflowing':
+                        for z in range(num_ez):
+                            labels_cropped.append(label)
+                            self.all_crops.append(self.cropped_image[i])
+                    else:
+                        AttributeError('Unexpected class name')
+
+
+        self.raw_test = list(zip(self.all_raw, labels_raw))
+        self.raw_train = list(zip(self.all_crops, labels_cropped))

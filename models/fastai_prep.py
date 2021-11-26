@@ -5,8 +5,8 @@ import re
 
 class FastAIPrep(ImageAugmentor):
 
-    def __init__(self, data_path, split_idx, split_factor, save_train, save_test, multi):
-        super().__init__(data_path, split_idx, split_factor, save_train, save_test)
+    def __init__(self, data_path, split_idx, split_factor, save_train, save_test, multi, oversample):
+        super().__init__(data_path, split_idx, split_factor, save_train, save_test, oversample)
         self.train_save_path = save_train
         self.test_save_path = save_test
         self.multi = multi
