@@ -3,6 +3,7 @@ from pathlib import Path
 import tqdm
 import numpy as np
 from multiprocessing import Process
+import pandas as pd
 
 class ImageSplitter():
     '''
@@ -112,6 +113,7 @@ class ImageSplitter():
                     else:
                         AttributeError('Unexpected class name')
 
-
+        print(pd.Series(labels_cropped).value_counts())
         self.raw_test = list(zip(self.all_raw, labels_raw))
         self.raw_train = list(zip(self.all_crops, labels_cropped))
+        print('done')

@@ -3,6 +3,7 @@ os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 import torch
 import glob
 torch.cuda.empty_cache()
+import pandas as pd
 
 from models.fastai_prep import FastAIPrep
 from fastai.vision.all import *
@@ -21,6 +22,7 @@ empty_file('./split_test_images')
 prep = FastAIPrep('./images', 0, 2, './aug_images', './split_test_images', multi=True, oversample=True)
 prep.check_test_train_data()
 df = prep.get_fastai_df()
+#df.to_csv('info.csv')
 print('done')
 
 tfms = None

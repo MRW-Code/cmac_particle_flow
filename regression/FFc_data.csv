@@ -1,0 +1,72 @@
+api,label,class
+Parteck 50,1.1584625,cohesive
+Cetyl alcohol,1.8596895,cohesive
+Span 60,1.9,cohesive
+Azelaic acid,2.1,cohesive
+Calcium Carbonate (40%) - binary,2.125864,cohesive
+1-octadecanol,2.264096,cohesive
+Lidocaine_mean,2.33,cohesive
+Calcium phosphate dibasic_mean,2.97,cohesive
+Calcium Carbonate (40%) - multicomponent,3.158818,cohesive
+Granulac 230_mean,3.219891333,cohesive
+Cellulose_mean,3.32,cohesive
+Potasium chloride,3.35161666666667,cohesive
+Caffeine_mean,3.546666667,cohesive
+Cholic acid,3.584081,cohesive
+Mowiol 18-88,3.78,cohesive
+ParacetamolPowder,3.88,cohesive
+Calcium carbonate_mean,4,EasyFlowing
+Magnesium stearate_mean,4.02,EasyFlowing
+S-Carboxymethyl-L-cysteine_mean,4.423333333,EasyFlowing
+MIcrocel MC-200_mean,4.458917,EasyFlowing
+ParacetamolPowder(40%)-binary,4.53,EasyFlowing
+Calcium Carbonate (20%) - binary,4.660315,EasyFlowing
+Phenylephrine_mean,5.02,EasyFlowing
+4-aminobenzoic acid_mean,5.033333333,EasyFlowing
+ParacetamolGranularSpecial (20%) - MC,5.052613667,EasyFlowing
+Sodium stearyl fumarate,5.59705333333333,EasyFlowing
+ParacetamolPowder(40%)-MC,6.53,EasyFlowing
+Ibuprofen 50,7.417128667,EasyFlowing
+Avicel PH-101,7.461506,EasyFlowing
+ParacetamolPowder(20%)-binary,7.72,EasyFlowing
+Calcium Carbonate (20%) - multicomponent,8.109656,EasyFlowing
+Affinisol HPMC_mean,8.110296,EasyFlowing
+soluplus_mean,8.4673515,EasyFlowing
+D-glucose_mean,9.29,EasyFlowing
+ParacetamolPowder(20%)-MC,9.55,EasyFlowing
+Ibuprofen 70_mean,9.576474,EasyFlowing
+Pluronic F-127,10.0745686666667,FreeFlowing
+methocel dc2_mean,10.37326,FreeFlowing
+Mefenamic acid,12.07,FreeFlowing
+ParacetamolGranularSpecial (40%) - binary,12.50257333,FreeFlowing
+Paracetamol Granular Special,12.94068,FreeFlowing
+Dimethyl Fumarate,13.02,FreeFlowing
+Ac-Di-Sol SD_mean,14.31598,FreeFlowing
+ParacetamolPowder(5%)-binary,14.67,FreeFlowing
+D-sorbitol_mean,14.735,FreeFlowing
+PVP_mean,14.775,FreeFlowing
+ParacetamolGranularSpecial (20%) - binary,15.90153667,FreeFlowing
+Microcel MC-102_mean,16.80310667,FreeFlowing
+HPMC_2_mean,17.975,FreeFlowing
+Ibuprofen 50 (40%) - binary,19.657915,FreeFlowing
+ParacetamolGranularSpecial (5%) - binary,20.22342,FreeFlowing
+Pearlitol 200SD,20.91575,FreeFlowing
+Mefenamic acid (20%) - MC,21.35,FreeFlowing
+Mefenamic acid (35%) - binary,22.62,FreeFlowing
+Ibuprofen (20%) + FF,23.001425,FreeFlowing
+Calcium Carbonate (5%) - binary,24.24866,FreeFlowing
+Mefenamic acid (35%) - MC,24.53,FreeFlowing
+Mefenamic acid (5%) - binary,25.02,FreeFlowing
+Ibuprofen 50 (5%) - binary,26.5273,FreeFlowing
+Pearlitol 300 DC_mean,27.0012275,FreeFlowing
+LUBRITOSE PB_mean,28.84025,FreeFlowing
+Benecel K100M_mean,28.93680467,FreeFlowing
+Lubritose mannitol_mean,30,FreeFlowing
+Mefenamic acid (5%) - MC,31.22,FreeFlowing
+LUBRITOSE MCC_mean,35.2334,FreeFlowing
+ParacetamolGranularSpecial (40%) - MC,35.29,FreeFlowing
+Ibuprofen 50 (20%) - binary,36.251875,FreeFlowing
+Pearlitol 100SD,38.21212,FreeFlowing
+Calcium Carbonate (5%) - multicomponent,42.37164,FreeFlowing
+FastFlo 316,49.19333,FreeFlowing
+Ibuprofen 50 (5%) - multicomponent,50.91044,FreeFlowing

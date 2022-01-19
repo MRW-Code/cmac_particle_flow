@@ -20,7 +20,7 @@ class ImageAugmentor(ImageSplitter):
 
         self.oversample = oversample
         if self.oversample == True:
-            self.do_oversampled_splitting(num_free=1, num_co=6, num_ez=3)
+            self.do_oversampled_splitting(num_free=1, num_co=9, num_ez=3)
         else:
             self.do_splitting()
 
