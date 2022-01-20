@@ -94,9 +94,10 @@ class RegressionImageAugmentor(RegressionImageSplitter):
                 for flip in flipped:
                     if self.save_augs is not None:
                         count = count + 1
-                        filename = str(self.save_augs) +\
-                                   '/' + str(self.raw_train[x][1]) +\
-                                   str(count)+ '_' + str(api) + '.jpg'
+                        # filename = str(self.save_augs) +\
+                        #            '/' + str(self.raw_train[x][1]) +\
+                        #            str(count)+ '__' + str(api) + '.jpg'
+                        filename = f'{self.save_augs}/{self.raw_train[x][1]}{count}__{api}.jpg'
                         sv_img = fromarray(flip)
                         sv_img.save(filename)
                     else:
@@ -105,7 +106,10 @@ class RegressionImageAugmentor(RegressionImageSplitter):
     def save_test_set(self):
         count = 0
         for x in tqdm.tqdm(range(len(self.raw_test))):
-            file_name = self.save_raw + '/' + str(self.raw_test[x][1]) + str(count) + '.jpg'
+            api = self.raw_test[x][2]
+            # file_name = self.save_raw + '/' + str(self.raw_test[x][1]) + str(count)\
+            #             + '__' + str(api) + '.jpg'
+            file_name = f'{self.save_raw}/{self.raw_test[x][1]}{count}__{api}.jpg'
             sv_img = fromarray(self.raw_test[x][0])
             sv_img.save(file_name)
             count = count + 1
@@ -114,37 +118,8 @@ class RegressionImageAugmentor(RegressionImageSplitter):
         self.do_augs()
         self.save_test_set()
 
-
-
-
-    # def do_aug_process(self, img, idx):
-    #     count = 0
-    #     self.img = img
-    #     rotated = self.rotating(6)
-    #     for rot in rotated:
-    #         flipped = self.flipping(rot)
-    #         for flip in flipped:
-    #             if self.save_augs is not None:
-    #                 count = count + 1
-    #                 filename = str(self.save_augs) +\
-    #                            '/' + str(self.raw_train[idx][1]) +\
-    #                            str(count) + '.jpg'
-    #                 sv_img = fromarray(flip)
-    #                 sv_img.save(filename)
-    #                 # print('done {} / {}'.format(count, len(self.raw_train)))
-    #             else:
-    #                 AttributeError('no save path provided for aug_images')
-    #                 # print(count)
-
-    # def do_augs_multi(self):
-    #     with concurrent.futures.ProcessPoolExecutor(max_workers=8) as executor:
-    #         executor.map(self.do_aug_process,
-    #                      [self.raw_train[x][0] for x in range(len(self.raw_train))],
-    #                      [np.arange(0, len(self.raw_train),1)[y] for y in range(len(self.raw_train))])
-
-
     def do_aug_process(self, data):
-        img, idx = data
+        img, idx, api = data
         count = 0
         self.img = img
         rotated = self.rotating(6)
@@ -153,9 +128,10 @@ class RegressionImageAugmentor(RegressionImageSplitter):
             for flip in flipped:
                 if self.save_augs is not None:
                     count = count + 1
-                    filename = str(self.save_augs) +\
-                               '/' + str(self.raw_train[idx][1]) +\
-                               str(idx) + '_' + str(count)  + '.jpg'
+                    # filename = str(self.save_augs) +\
+                    #            '/' + str(self.raw_train[idx][1]) +\
+                    #            str(idx) + '_' + str(count)  + '.jpg'
+                    filename = f'{self.save_augs}/{self.raw_train[idx][1]}{idx}_{count}__{api}.jpg'
                     sv_img = fromarray(flip)
                     sv_img.save(filename)
                     # print('done {} / {}'.format(count, len(self.raw_train)))
@@ -164,16 +140,10 @@ class RegressionImageAugmentor(RegressionImageSplitter):
                     # print(count)
 
 
-    # def do_augs_multi(self):
-    #     data = zip([self.raw_train[x][0] for x in range(len(self.raw_train))],
-    #                [np.arange(0, len(self.raw_train), 1)[y] for y in range(len(self.raw_train))]
-    #                )
-    #     with concurrent.futures.ThreadPoolExecutor(max_workers=8) as executor:
-    #         executor.map(self.do_aug_process, data)
-
     def do_augs_multi(self):
         data = zip([self.raw_train[x][0] for x in range(len(self.raw_train))],
-                   [np.arange(0, len(self.raw_train), 1)[y] for y in range(len(self.raw_train))]
+                   [np.arange(0, len(self.raw_train), 1)[y] for y in range(len(self.raw_train))],
+                   [self.raw_train[z][2] for z in range(len(self.raw_train))]
                    )
         for dt in data:
             p = multiprocessing.Process(target=self.do_aug_process, args=(dt,))

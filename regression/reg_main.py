@@ -20,7 +20,7 @@ empty_file('../split_test_images')
 # change the second number to the appropriate split index
 
 prep = RegressionFastAIPrep('../images', 0, 2, '../aug_images', '../split_test_images',
-                  multi=False,
+                  multi=True,
                   oversample=False)
 prep.check_test_train_data()
 df = prep.get_fastai_df()
@@ -33,15 +33,16 @@ dls = ImageDataLoaders.from_df(df,
                                fn_col=0,
                                folder=None,
                                suff='',
-                               label_col=1,
+                               label_col=2,
                                label_delim=None,
-                               valid_col=2,
+                               valid_col=1,
                                item_tfms=None,
                                batch_tfms=tfms,
                                bs=16,
                                val_bs=None,
                                shuffle=True,
-                               device=None)
+                               device=None,
+                               y_block=RegressionBlock)
 
 learn = cnn_learner(dls, resnet18, metrics=[accuracy]).to_fp16()
 

@@ -42,10 +42,10 @@ class RegressionFastAIPrep(RegressionImageAugmentor):
     def get_df_attributes(self, direc, is_valid):
         df = pd.DataFrame({'fname' : os.listdir(direc)})
         df['fname'] = direc + '/' + df['fname']
-        df['api'] = [re.search(r's\/.*_(.*).jpg', x).group(1) for x in df['fname']]
+        df['api'] = [re.search(r's\/.*__(.*).jpg', x).group(1) for x in df['fname']]
         df['is_valid'] = is_valid
 
-        label_df = pd.read_csv('./FFc_data.csv', usecols=[0, 1])
+        label_df = pd.read_csv('./dump/FFc_data.csv', usecols=[0, 1])
         final_df = df.merge(label_df, on='api').drop('api', axis=1)
 
         return final_df
@@ -54,4 +54,5 @@ class RegressionFastAIPrep(RegressionImageAugmentor):
         train = self.get_df_attributes(self.train_save_path, is_valid=0)
         val = self.get_df_attributes(self.test_save_path, is_valid=1)
         df = pd.concat([train, val], axis=0)
+        # df['fname'] = [re.search(r'(.*)\__', x)[1] + '.jpg' for x in df.fname]
         return df

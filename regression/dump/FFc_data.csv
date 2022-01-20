@@ -1,0 +1,98 @@
+api,FFc,Class
+Parteck 50_19mm,1.1584625,cohesive
+Parteck 50,1.1584625,cohesive
+Alcohol cetyl,1.8596895,cohesive
+Cetyl alcohol,1.8596895,cohesive
+Span 60_19mm,1.9,cohesive
+Span 60,1.9,cohesive
+Azelaic acid,2.1,cohesive
+Calcium Carbonate (40%) - binary,2.125864,cohesive
+1-Octadecanol,2.264096,cohesive
+Lidocaine_19mm,2.33,cohesive
+Lidocaine,2.33,cohesive
+Calcium Phosphate Dibasic,2.97,cohesive
+Calcium phosphate dibasic_19mm,2.97,cohesive
+Calcium Carbonate (40%) - multicomponent_15 mm,3.158818,cohesive
+Calcium Carbonate (40%) - multicomponent,3.158818,cohesive
+Granulac 230_11mm,3.219891333,cohesive
+Granulac 230,3.219891333,cohesive
+Cellulose_19mm,3.32,cohesive
+Cellulose,3.32,cohesive
+Potasium chloride_19mm,3.35161666666667,cohesive
+Potasium chloride,3.35161666666667,cohesive
+Caffeine_15mm,3.546666667,cohesive
+Caffeine_19mm,3.546666667,cohesive
+Caffeine,3.546666667,cohesive
+Cholic acid,3.584081,cohesive
+Mowiol 18-88,3.78,cohesive
+ParacetamolPowder_11mm,3.88,cohesive
+ParacetamolPowder,3.88,cohesive
+Calcium Carbonate_15 mm,4,EasyFlowing
+Calcium Carbonate,4,EasyFlowing
+Magnesium stearate_,4.02,EasyFlowing
+Magnesium stearate,4.02,EasyFlowing
+S-carboxyl-L-cysteine_11mm,4.423333333,EasyFlowing
+S-carboxymethyl-L-cysteine,4.423333333,EasyFlowing
+Microcel MC-200_13mm,4.458917,EasyFlowing
+Microcel MC-200,4.458917,EasyFlowing
+ParacetamolPowder (40%) - binary,4.53,EasyFlowing
+Calcium Carbonate (20%) - binary_5mm,4.660315,EasyFlowing
+Calcium Carbonate (20%) - binary,4.660315,EasyFlowing
+Phenylephrine_19mm,5.02,EasyFlowing
+Phenylephrine,5.02,EasyFlowing
+4-aminobenzoic acid_11mm,5.033333333,EasyFlowing
+4-aminobenzoic acid,5.033333333,EasyFlowing
+ParacetamolGranularSpecial(20%) - multicomponent_11mm,5.052613667,EasyFlowing
+ParacetamolGranularSpecial(20%) - multicomponent,5.052613667,EasyFlowing
+Sodium stearyl fumarate_11mm,5.59705333333333,EasyFlowing
+Sodium Stearyl Fumarate,5.59705333333333,EasyFlowing
+ParacetamolPowder (40%) - multicomponent,6.53,EasyFlowing
+Ibuprofen 50,7.417128667,EasyFlowing
+Avicel PH-101_5mm,7.461506,EasyFlowing
+Avicel PH-101,7.461506,EasyFlowing
+ParacetamolPowder (20%) - binary,7.72,EasyFlowing
+Calcium Carbonate (20%) - multicomponent,8.109656,EasyFlowing
+Affinisol_5mm,8.110296,EasyFlowing
+Affinisol,8.110296,EasyFlowing
+Soluplus_19mm,8.4673515,EasyFlowing
+Soluplus,8.4673515,EasyFlowing
+D-glucose_11mm,9.29,EasyFlowing
+D-glucose,9.29,EasyFlowing
+ParacetamolPowder (20%) - multicomponent,9.55,EasyFlowing
+Ibuprofen 70_5mm,9.576474,EasyFlowing
+Ibuprofen 70,9.576474,EasyFlowing
+Pluronic F-127_19mm,10.0745686666667,FreeFlowing
+Methocel DC2,10.37326,FreeFlowing
+Mefenamic acid,12.07,FreeFlowing
+Paracetamol GrSp (40%) - binary,12.50257333,FreeFlowing
+Paracetamol Granular Special,12.94068,FreeFlowing
+Dimethyl fumarate,13.02,FreeFlowing
+Ac-Di-Sol,14.31598,FreeFlowing
+Paracetamol Powder (5%) - binary,14.67,FreeFlowing
+D-sorbitol,14.735,FreeFlowing
+PVP,14.775,FreeFlowing
+Paracetamol GrSp (20%) - binary,15.90153667,FreeFlowing
+Microcel MC-102,16.80310667,FreeFlowing
+HPMC,17.975,FreeFlowing
+Ibuprofen (40%) - binary,19.657915,FreeFlowing
+ParacetamolGranularSpecial (5%) - binary,20.22342,FreeFlowing
+Pearlitol 200SD,20.91575,FreeFlowing
+Mefenamic acid (20%) - multicomponent,21.35,FreeFlowing
+Mefenamic acid (35.5%) + FastFlo316,22.62,FreeFlowing
+Ibuprofen (20%) - multicomponent,23.001425,FreeFlowing
+Calcium Carbonate (5%) - binary,24.24866,FreeFlowing
+Mefenamic acid (35.5%) - multicomponent,24.53,FreeFlowing
+Mefenamic acid (5%) + FastFlo316,25.02,FreeFlowing
+Ibuprofen (5%) - binary,26.5273,FreeFlowing
+Pearlitol 300DC,27.0012275,FreeFlowing
+Lubritose PB,28.84025,FreeFlowing
+Benecel K100M,28.93680467,FreeFlowing
+Lubritose mannitol,30,FreeFlowing
+Mefenamic acid (5%) - multicomponent,31.22,FreeFlowing
+Lubritose MCC,35.2334,FreeFlowing
+ParacetamolGranularSpecial (40%) - multicomponent,35.29,FreeFlowing
+Ibuprofen (20%) - binary,36.251875,FreeFlowing
+Pearlitol 100SD,38.21212,FreeFlowing
+Calcium Carbonate (5%) - multicomponent,42.37164,FreeFlowing
+FastFlo316,49.19333,FreeFlowing
+Ibuprofen (5%) - multicomponent,50.91044,FreeFlowing
