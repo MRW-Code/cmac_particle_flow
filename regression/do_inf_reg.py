@@ -1,9 +1,9 @@
-from inference.inference import Inference
+from inference_reg import RegressionInference
 import os
 from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
 import matplotlib.pyplot as plt
 
-learner = '../code_saves/trained_model_200.pkl'
+learner = './dump/trained_model_100.pkl'
 split_factor = 2
 
 inf = Inference(learner, split_factor)

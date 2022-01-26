@@ -3,10 +3,10 @@ from fastai.vision.all import *
 import os
 import tqdm
 from statistics import mode
-from models.fastai_prep import FastAIPrep
+from fastai_prep_reg import RegressionFastAIPrep
 
 
-class Inference(FastAIPrep):
+class RegressionInference(RegressionFastAIPrep):
 
     def __init__(self, learner, split_factor):
         self.split_factor = split_factor
