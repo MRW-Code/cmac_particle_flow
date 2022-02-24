@@ -36,7 +36,7 @@ def relabel(co_ez, ez_fr, df):
     df['new'] = new_labels
     return df
 
- def relabel_val(co_ez, ez_fr, true):
+def relabel_val(co_ez, ez_fr, true):
     new_labels = [None] * len(true)
     for idx, label in enumerate(true):
         if label <= co_ez:
