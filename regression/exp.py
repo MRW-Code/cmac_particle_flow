@@ -37,15 +37,15 @@ def relabel(co_ez, ez_fr, df):
     return df
 
  def relabel_val(co_ez, ez_fr, true):
-            new_labels = [None] * len(true)
-            for idx, label in enumerate(true):
-                if label <= co_ez:
-                    new_labels[idx] = 'Cohesive'
-                elif co_ez < label < ez_fr:
-                    new_labels[idx] = 'EasyFlowing'
-                else:
-                    new_labels[idx] = 'FreeFlowing'
-            return true
+    new_labels = [None] * len(true)
+    for idx, label in enumerate(true):
+        if label <= co_ez:
+            new_labels[idx] = 'Cohesive'
+        elif co_ez < label < ez_fr:
+            new_labels[idx] = 'EasyFlowing'
+        else:
+            new_labels[idx] = 'FreeFlowing'
+    return true
 
 def run(idx_list):
     idx_list = []
