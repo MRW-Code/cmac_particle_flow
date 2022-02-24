@@ -1,5 +1,8 @@
 import os
 os.environ['CUDA_VISIBLE_DEVICES'] = '3'
+import sys
+sys.path.append('..')
+
 import torch
 import glob
 torch.cuda.empty_cache()
