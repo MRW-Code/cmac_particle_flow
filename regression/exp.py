@@ -101,28 +101,28 @@ def run(idx_list):
         learn.recorder.plot_loss()
         plt.savefig(f'./training_plot_{idx}.png')
 
-        interp = ClassificationInterpretation.from_learner(learn)
-        interp.plot_confusion_matrix()
-        plt.savefig(f'./dump/conf_mtrx_train{idx}.png')
-
-        learner = f'./models/trained_model_{idx}.pkl'
-        split_factor = 2
-
-        inf = Inference(learner, split_factor)
-        true, preds = inf.infer()
-        true = list(df.new)
-        print(f'True = {true}')
-        acc = accuracy_score(true, preds)
-        print(f'Accuracy = {acc}')
-        exit()
-        cm = confusion_matrix(true, preds)
-        disp = ConfusionMatrixDisplay(cm, display_labels=os.listdir('../external_test_set'))
-        disp.plot()
-        plt.savefig(f'./dump/ext_test_conf_mtrx{idx}.png')
-
-        my_indexes.append(idx)
-        val_acc.append(acc)
-    print(my_indexes, val_acc)
+    #     interp = ClassificationInterpretation.from_learner(learn)
+    #     interp.plot_confusion_matrix()
+    #     plt.savefig(f'./dump/conf_mtrx_train{idx}.png')
+    #
+    #     learner = f'./models/trained_model_{idx}.pkl'
+    #     split_factor = 2
+    #
+    #     inf = Inference(learner, split_factor)
+    #     true, preds = inf.infer()
+    #     true = list(df.new)
+    #     print(f'True = {true}')
+    #     acc = accuracy_score(true, preds)
+    #     print(f'Accuracy = {acc}')
+    #     exit()
+    #     cm = confusion_matrix(true, preds)
+    #     disp = ConfusionMatrixDisplay(cm, display_labels=os.listdir('../external_test_set'))
+    #     disp.plot()
+    #     plt.savefig(f'./dump/ext_test_conf_mtrx{idx}.png')
+    #
+    #     my_indexes.append(idx)
+    #     val_acc.append(acc)
+    # print(my_indexes, val_acc)
 
 
 print(sys.path)
