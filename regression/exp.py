@@ -5,19 +5,12 @@ import glob
 torch.cuda.empty_cache()
 import pandas as pd
 from inference.inference import Inference
-
 from fastai_prep_reg import RegressionFastAIPrep
 from fastai.vision.all import *
 from fastai.distributed import *
-
-
 import os
 from sklearn.metrics import accuracy_score, ConfusionMatrixDisplay, confusion_matrix
 import matplotlib.pyplot as plt
-
-
-
-
 
 def empty_file(path):
     files = glob.glob(path + '/*')
