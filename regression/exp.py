@@ -109,10 +109,8 @@ def run(idx_list):
         split_factor = 2
 
         inf = Inference(learner, split_factor)
-
-
+        true, preds = inf.infer()
         true = relabel_val(co_ez, ez_fr, true)
-
         acc = accuracy_score(true, preds)
         print(acc)
 
@@ -120,7 +118,6 @@ def run(idx_list):
         disp = ConfusionMatrixDisplay(cm, display_labels=os.listdir('./external_test_set'))
         disp.plot()
         plt.savefig(f'./dump/ext_test_conf_mtrx{idx}.png')
-        print('done')
 
         my_indexes.append(idx)
         val_acc.append(acc)
