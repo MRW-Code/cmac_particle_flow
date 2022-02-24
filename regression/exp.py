@@ -96,7 +96,7 @@ def run(idx_list):
         #                                  ReduceLROnPlateau(monitor='valid_loss',
         #                                                    min_delta=0.1, patience=2)])
 
-        learn.export('./models/trained_model_{idx}.pkl')
+        learn.export(f'./models/trained_model_{idx}.pkl')
 
         learn.recorder.plot_loss()
         plt.savefig(f'./training_plot_{idx}.png')
