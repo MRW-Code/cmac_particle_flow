@@ -110,7 +110,7 @@ def run(idx_list):
 
         inf = Inference(learner, split_factor)
         true, preds = inf.infer()
-        true = relabel_val(co_ez, ez_fr, true)
+        true = df.new
         print(f'True = {true}')
         acc = accuracy_score(true, preds)
         print(f'Accuracy = {acc}')
