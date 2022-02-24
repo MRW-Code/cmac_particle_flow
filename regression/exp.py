@@ -4,7 +4,7 @@ import torch
 import glob
 torch.cuda.empty_cache()
 import pandas as pd
-
+from inference.inference import Inference
 
 from fastai_prep_reg import RegressionFastAIPrep
 from fastai.vision.all import *
@@ -109,8 +109,7 @@ def run(idx_list):
         interp.plot_confusion_matrix()
         plt.savefig(f'./dump/conf_mtrx_train{idx}.png')
 
-        from inference.inference import Inference
-        inf = Inference(learn, split_factor)
+        inf = Inference(learn, 2)
         true, preds = inf.infer()
 
 
