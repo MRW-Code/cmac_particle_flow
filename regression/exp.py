@@ -4,12 +4,13 @@ import torch
 import glob
 torch.cuda.empty_cache()
 import pandas as pd
+from inference.inference import Inference
 
 from fastai_prep_reg import RegressionFastAIPrep
 from fastai.vision.all import *
 from fastai.distributed import *
 
-from inference.inference import Inference
+
 import os
 from sklearn.metrics import accuracy_score, ConfusionMatrixDisplay, confusion_matrix
 import matplotlib.pyplot as plt
@@ -48,7 +49,7 @@ def relabel_val(co_ez, ez_fr, true):
     return true
 
 def run(idx_list):
-    idx_list = []
+    my_indexes = []
     val_acc = []
     for idx in idx_list:
         torch.cuda.empty_cache()
@@ -123,9 +124,9 @@ def run(idx_list):
         plt.savefig(f'./dump/ext_test_conf_mtrx{idx}.png')
         print('done')
 
-        idx_list.append(idx)
+        my_indexes.append(idx)
         val_acc.append(acc)
-    print(idx_list, val_acc)
+    print(my_indexes, val_acc)
 
 idx_list = [3,4,5,6,7]
 test = run(idx_list)
