@@ -93,7 +93,7 @@ def run(idx_list):
         #                                  ReduceLROnPlateau(monitor='valid_loss',
         #                                                    min_delta=0.1, patience=2)])
 
-        learn.export(f'./trained_model_{idx}.pkl')
+        learn.export()
 
         learn.recorder.plot_loss()
         plt.savefig(f'./training_plot_{idx}.png')
@@ -102,8 +102,10 @@ def run(idx_list):
         interp.plot_confusion_matrix()
         plt.savefig(f'./dump/conf_mtrx_train{idx}.png')
 
-        inf = Inference(learn, 2)
-        true, preds = inf.infer()
+        learner = f'./models/trained_model_{idx}.pkl'
+        split_factor = 2
+
+        inf = Inference(learner, split_factor)
 
 
         true = relabel_val(co_ez, ez_fr, true)
