@@ -86,7 +86,7 @@ def run(idx_list):
 
         learn = cnn_learner(dls, resnet18, metrics=[accuracy]).to_fp16()
 
-        learn.fine_tune(1, 0.00001, cbs=[SaveModelCallback(fname=f'./best_cbs_relab_{idx}'),
+        learn.fine_tune(100, 0.00001, cbs=[SaveModelCallback(fname=f'./best_cbs_relab_{idx}'),
                                            ReduceLROnPlateau(monitor='valid_loss',
                                                              min_delta=0.1,
                                                              patience=2)])
