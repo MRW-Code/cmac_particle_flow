@@ -42,7 +42,7 @@ def relabel_val(co_ez, ez_fr, true):
             new_labels[idx] = 'EasyFlowing'
         else:
             new_labels[idx] = 'FreeFlowing'
-    return true
+    return new_labels
 
 def run(idx_list):
     my_indexes = []
