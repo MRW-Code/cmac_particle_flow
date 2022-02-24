@@ -4,7 +4,7 @@ import torch
 import glob
 torch.cuda.empty_cache()
 import pandas as pd
-from inference.inference import Inference
+from inference import Inference
 from fastai_prep_reg import RegressionFastAIPrep
 from fastai.vision.all import *
 from fastai.distributed import *
