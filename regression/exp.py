@@ -126,6 +126,8 @@ def run(idx_list):
         val_acc.append(acc)
     print(my_indexes, val_acc)
 
+
+print(sys.path)
 idx_list = [3,4,5,6,7]
 test = run(idx_list)
 print('done')
