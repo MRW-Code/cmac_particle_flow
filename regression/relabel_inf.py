@@ -20,7 +20,7 @@ def relabel(co_ez, ez_fr, true):
             new_labels[idx] = 'FreeFlowing'
     return true
 
-true = get_true(co_ez, ez_fr, true)
+true = relabel(co_ez, ez_fr, true)
 
 
 acc = accuracy_score(true, preds)
