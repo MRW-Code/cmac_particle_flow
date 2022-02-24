@@ -86,7 +86,7 @@ def run(idx_list):
 
         learn = cnn_learner(dls, resnet18, metrics=[accuracy]).to_fp16()
 
-        learn.fine_tune(2, 0.00001, cbs=[SaveModelCallback(fname=f'./best_cbs_relab_{idx}'),
+        learn.fine_tune(1, 0.00001, cbs=[SaveModelCallback(fname=f'./best_cbs_relab_{idx}'),
                                            ReduceLROnPlateau(monitor='valid_loss',
                                                              min_delta=0.1,
                                                              patience=2)])
@@ -115,7 +115,7 @@ def run(idx_list):
         print(acc)
 
         cm = confusion_matrix(true, preds)
-        disp = ConfusionMatrixDisplay(cm, display_labels=os.listdir('./external_test_set'))
+        disp = ConfusionMatrixDisplay(cm, display_labels=os.listdir('../external_test_set'))
         disp.plot()
         plt.savefig(f'./dump/ext_test_conf_mtrx{idx}.png')
 
