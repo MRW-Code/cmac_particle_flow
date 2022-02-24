@@ -111,9 +111,10 @@ def run(idx_list):
         inf = Inference(learner, split_factor)
         true, preds = inf.infer()
         true = relabel_val(co_ez, ez_fr, true)
+        print(f'True = {true}')
         acc = accuracy_score(true, preds)
-        print(acc)
-
+        print(f'Accuracy = {acc}')
+        exit()
         cm = confusion_matrix(true, preds)
         disp = ConfusionMatrixDisplay(cm, display_labels=os.listdir('../external_test_set'))
         disp.plot()
