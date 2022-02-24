@@ -63,7 +63,7 @@ dls = ImageDataLoaders.from_df(df,
 
 learn = cnn_learner(dls, resnet18, metrics=[accuracy]).to_fp16()
 
-learn.fine_tune(100, 0.00001, cbs=[SaveModelCallback(fname='./dump/best_cbs_100'),
+learn.fine_tune(100, 0.00001, cbs=[SaveModelCallback(fname='./best_cbs_relab'),
                                   ReduceLROnPlateau(monitor='valid_loss',
                                                     min_delta=0.1,
                                                     patience=2)])

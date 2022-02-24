@@ -3,7 +3,7 @@ import os
 from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
 import matplotlib.pyplot as plt
 
-learner = './dump/trained_model_100.pkl'
+learner = './models/trained_model_relab.pkl'
 split_factor = 2
 
 inf = RegressionInference(learner, split_factor)
