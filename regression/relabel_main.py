@@ -1,5 +1,5 @@
 import os
-os.environ['CUDA_VISIBLE_DEVICES'] = '3'
+os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 import torch
 import glob
 torch.cuda.empty_cache()
@@ -39,7 +39,7 @@ def relabel(co_ez, ez_fr, df):
     df['new'] = new_labels
     return df
 
-co_ez = 5
+co_ez = 6
 ez_fr = 10
 
 df = relabel(co_ez, ez_fr, df)

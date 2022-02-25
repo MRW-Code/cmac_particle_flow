@@ -6,24 +6,45 @@ import matplotlib.pyplot as plt
 import os
 
 
+co_ez = 4
+ez_fr = 10
 
-df = pd.read_csv('./regression/input_and_labels', index_col=0)
-print('done')
+def relabel_val(co_ez, ez_fr, true, api):
+    ref_df = pd.read_csv('./regression/dump/FFc_data.csv')
+    new_labels = [None] * len(true)
+    for idx, label in enumerate(true):
+        api_test = api[idx].stem
+        ffc = ref_df['FFc'][ref_df['api'] == api_test].values[0]
 
-idx = 3
+        # print(api[idx], ffc)
+
+        if ffc <= co_ez:
+            new_labels[idx] = 'cohesive'
+        elif co_ez < ffc < ez_fr:
+            new_labels[idx] = 'EasyFlowing'
+        else:
+            new_labels[idx] = 'FreeFlowing'
+    return new_labels
+
+
+
+idx = co_ez	
 learner = f'./regression/models/trained_model_{idx}.pkl'
+print(learner)
 split_factor = 2
 
 inf = Inference(learner, split_factor)
-true, preds = inf.infer()
-true = list(df.new)
-print(f'True = {true}')
+true, preds, api = inf.infer()
 
-acc = accuracy_score(true, preds)
+new_true = relabel_val(co_ez, ez_fr, true, api)
+print(new_true)
+print(preds)
+
+acc = accuracy_score(new_true, preds)
 print(f'Accuracy = {acc}')
-exit()
-cm = confusion_matrix(true, preds)
-disp = ConfusionMatrixDisplay(cm, display_labels=os.listdir('../external_test_set'))
+
+cm = confusion_matrix(new_true, preds)
+disp = ConfusionMatrixDisplay(cm, display_labels=os.listdir('./external_test_set'))
 disp.plot()
-plt.savefig(f'./temp/ext_test_conf_mtrx{idx}.png')
+plt.savefig(f'./ext_test_conf_mtrx{idx}.png')
 
