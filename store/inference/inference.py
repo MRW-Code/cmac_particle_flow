@@ -3,7 +3,7 @@ from fastai.vision.all import *
 import os
 import tqdm
 from statistics import mode
-from models.fastai_prep import FastAIPrep
+from store.models.fastai_prep import FastAIPrep
 
 
 class Inference(FastAIPrep):

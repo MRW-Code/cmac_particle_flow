@@ -1,14 +1,12 @@
 import os
 os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 import sys
-sys.path.append('..')
+sys.path.append('../..')
 
 import torch
 import glob
 torch.cuda.empty_cache()
-import pandas as pd
-from inference import Inference
-from fastai_prep_reg import RegressionFastAIPrep
+from store.inference import Inference
 from fastai.vision.all import *
 from fastai.distributed import *
 import os
@@ -35,7 +33,7 @@ def relabel(co_ez, ez_fr, df):
     return df
 
 def relabel_val(co_ez, ez_fr, true, api):
-    ref_df = pd.read_csv('./dump/FFc_data.csv')
+    ref_df = pd.read_csv('dump/FFc_data.csv')
     new_labels = [None] * len(true)
     for idx, label in enumerate(true):
         api_test = api[idx]

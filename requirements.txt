@@ -1,0 +1,7 @@
+numpy
+opencv-python
+tqdm
+joblib
+pandas
+scikit-learn
+fastai

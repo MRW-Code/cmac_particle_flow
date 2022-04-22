@@ -1,4 +1,4 @@
-from inference.inference import Inference
+from store.inference.inference import Inference
 import os
 from sklearn.metrics import accuracy_score, ConfusionMatrixDisplay, confusion_matrix
 import matplotlib.pyplot as plt

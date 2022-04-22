@@ -1,6 +1,5 @@
 import pandas as pd
-import numpy as np
-from inference.inference import Inference
+from store.inference.inference import Inference
 from sklearn.metrics import accuracy_score, ConfusionMatrixDisplay, confusion_matrix
 import matplotlib.pyplot as plt
 import os
@@ -10,7 +9,7 @@ co_ez = 4
 ez_fr = 10
 
 def relabel_val(co_ez, ez_fr, true, api):
-    ref_df = pd.read_csv('./regression/dump/FFc_data.csv')
+    ref_df = pd.read_csv('regression/dump/FFc_data.csv')
     new_labels = [None] * len(true)
     for idx, label in enumerate(true):
         api_test = api[idx].stem
@@ -44,7 +43,7 @@ acc = accuracy_score(new_true, preds)
 print(f'Accuracy = {acc}')
 
 cm = confusion_matrix(new_true, preds)
-disp = ConfusionMatrixDisplay(cm, display_labels=os.listdir('./external_test_set'))
+disp = ConfusionMatrixDisplay(cm, display_labels=os.listdir('external_test_set'))
 disp.plot()
 plt.savefig(f'./ext_test_conf_mtrx{idx}.png')
 
