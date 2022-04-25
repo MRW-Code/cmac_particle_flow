@@ -33,7 +33,7 @@ if __name__ == '__main__':
             splitter.save_split_images()
         kfold_model(n_splits=5)
 
-##### ABOVE HERE WORKS AND TESTED, BELOW HERE NOTHING
+##### ABOVE HERE WORKS AND TESTED, BELOW HERE NOTHING TESTED YET
 
     elif args.cv_method == 'crop_fold':
         splitter = ImageSplitter(img_paths=img_paths, split_factor=args.split_factor, val_idx=0)
