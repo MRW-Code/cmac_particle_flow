@@ -15,7 +15,7 @@ def train_fastai_model_classification(model_df, count, exp_type):
                                    item_tfms=None,
                                    batch_tfms=None,
                                    y_block=CategoryBlock(),
-                                   bs=32,
+                                   bs=16,
                                    shuffle=True)
 
     metrics = [error_rate, accuracy]
