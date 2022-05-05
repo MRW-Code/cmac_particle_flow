@@ -6,6 +6,8 @@ from fastai.vision.all import *
 from src.utils import args
 from src.image_augmenting import ImageAugmentor
 from src.helpers import paths_from_dir
+from src.image_splitting import ImageSplitter
+
 
 def train_fastai_model_classification(model_df, count, exp_type):
     dls = ImageDataLoaders.from_df(model_df,
@@ -69,3 +71,51 @@ def kfold_model(n_splits):
     print(f'mean acc = {np.mean([best_metrics[x][2] for x in range(n_splits)])}')
     return None
 
+def split_first_model(n_splits, img_paths):
+    paths = img_paths
+    labels = [pth.parent.name for pth in paths]
+
+    kfold = StratifiedKFold(n_splits=n_splits, shuffle=True)
+    for train_index, val_index in tqdm(kfold.split(paths, labels)):
+
+        X_train, X_val = np.array(paths)[train_index], np.array(paths)[val_index]
+        y_train, y_val = np.array(labels)[train_index], np.array(labels)[val_index]
+
+        # Do the image splitting
+        splitter = ImageSplitter(img_paths=None, split_factor=args.split_factor, val_idx=None)
+        splitter.save_split_first(X_train, X_val)
+
+        # Get train/val of the new split images
+        X_train = paths_from_dir('./split_images/train')
+        y_train = [pth.parent.name for pth in X_train]
+        X_val = paths_from_dir('./split_images/valid')
+        y_val = [pth.parent.name for pth in X_val]
+
+        # Make a model df
+        train_df = pd.DataFrame({'fname': X_train, 'label': y_train})
+        train_df.loc[:, 'is_valid'] = 0
+        val_df = pd.DataFrame({'fname': X_val, 'label': y_val})
+        val_df.loc[:, 'is_valid'] = 1
+
+        # Apply Augs if needed and remake model df if applied
+        if args.no_augs:
+            model_df = pd.concat([train_df, val_df])
+        else:
+            raw_model_df = pd.concat([train_df, val_df])
+            augmentor = ImageAugmentor(save_path='./aug_images', training_data=raw_model_df)
+            augmentor.do_augs()
+            aug_paths = paths_from_dir('./aug_images')
+            aug_labels = [j.parent.name for j in aug_paths]
+            aug_df = pd.DataFrame({'fname': aug_paths, 'label': aug_labels})
+            aug_df.loc[:, 'is_valid'] = 0
+            model_df = pd.concat([aug_df, val_df])
+
+        exp_type = 'split_first'
+        trainer = train_fastai_model_classification(model_df, count, exp_type=exp_type)
+        model = load_learner(f'./checkpoints/{exp_type}/models/sf{args.split_factor}_fold_{count}.pkl', cpu=False)
+        best_metrics.append(model.final_record)
+        count += 1
+
+    print(best_metrics)
+    print(f'mean acc = {np.mean([best_metrics[x][2] for x in range(n_splits)])}')
+    return None

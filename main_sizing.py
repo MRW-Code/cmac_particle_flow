@@ -2,8 +2,8 @@ from src.utils import args
 import numpy as np
 from src.image_splitting import ImageSplitter
 from src.image_augmenting import ImageAugmentor
-from src.helpers import paths_from_dir, make_needed_dirs, empty_file
-from src.training import kfold_model
+from src.helpers import paths_from_dir, make_needed_dirs, delete_file
+from src.training import kfold_model, split_first_model
 
 '''
    This script caried out the testing to see how far we could split the images
@@ -21,13 +21,16 @@ from src.training import kfold_model
 
 if __name__ == '__main__':
     if args.from_scratch:
-        empty_file('./aug_images')
-        empty_file('./split_images')
+        delete_file('./aug_images')
+        delete_file('./split_images')
 
     make_needed_dirs()
     img_paths = paths_from_dir('./images')
 
-    if args.cv_method == 'kfold':
+    if args.cv_method == 'split_first':
+        split_first_model(n_splits=5, img_paths=img_paths)
+
+    elif args.cv_method == 'kfold':
         if args.from_scratch:
             splitter = ImageSplitter(img_paths=img_paths, split_factor=args.split_factor, val_idx=None)
             splitter.save_split_images()

@@ -1,7 +1,9 @@
+import os
 import numpy as np
 import cv2
 from tqdm import tqdm
 from PIL.Image import fromarray
+from src.helpers import delete_file
 
 class ImageSplitter():
 
@@ -65,3 +67,22 @@ class ImageSplitter():
             for img, name, label in validation_data:
                 image = fromarray(img)
                 image.save(f'./split_images/valid/{label}/{name}')
+
+    def save_split_first(self, X_train, X_val):
+        print('SAVING SPLIT IMAGES TRAIN')
+        delete_file('./split_images/train/')
+        self.img_paths = X_train
+        training_data, _ = self.do_splitting()
+        for img, name, label in tqdm(training_data, nrows=80):
+            os.makedirs(f'./split_images/train/{label}', exist_ok=True)
+            image = fromarray(img)
+            image.save(f'./split_images/train/{label}/{name}')
+
+        print('SAVING SPLIT IMAGES TEST')
+        delete_file('./split_images/valid/')
+        self.img_paths = X_val
+        validation_data, _ = self.do_splitting()
+        for img, name, label in validation_data:
+            os.makedirs(f'./split_images/valid/{label}', exist_ok=True)
+            image = fromarray(img)
+            image.save(f'./split_images/valid/{label}/{name}')

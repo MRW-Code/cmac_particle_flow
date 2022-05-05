@@ -9,8 +9,8 @@ parser.add_argument('-s', '--split_factor', action='store', dest='split_factor',
                     default=2, choices=range(0, 10))
 parser.add_argument('--no_augs', action='store_true', dest='no_augs', default=False)
 parser.add_argument('--from_scratch', action='store_true', dest='from_scratch')
-parser.add_argument('-v', '--cv_method', action='store', dest='cv_method', default='kfold',
-                  choices=['kfold', 'crop_fold'])
+parser.add_argument('-v', '--cv_method', action='store', dest='cv_method', default='split_first',
+                  choices=['kfold', 'crop_fold', 'split_first'])
 
 args = parser.parse_args()
 
