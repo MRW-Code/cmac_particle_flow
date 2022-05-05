@@ -75,6 +75,8 @@ def split_first_model(n_splits, img_paths):
     paths = img_paths
     labels = [pth.parent.name for pth in paths]
 
+    count = 0
+    best_metrics = []
     kfold = StratifiedKFold(n_splits=n_splits, shuffle=True)
     for train_index, val_index in tqdm(kfold.split(paths, labels)):
 
