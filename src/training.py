@@ -1,3 +1,5 @@
+import os
+
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import StratifiedKFold
@@ -30,6 +32,7 @@ def train_fastai_model_classification(model_df, count, exp_type):
 
     # print(learn.validate())
     ### CHANGE THIS SAVE PATH
+    os.makedirs(f'./checkpoints/{exp_type}/models', exist_ok=True)
     learn.export(f'./checkpoints/{exp_type}/models/sf{args.split_factor}_fold_{count}.pkl')
 
 
