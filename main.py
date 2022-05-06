@@ -39,8 +39,9 @@ if __name__ == '__main__':
 ##### ABOVE HERE WORKS AND TESTED, BELOW HERE NOTHING TESTED YET
 
     elif args.cv_method == 'crop_fold':
-        splitter = ImageSplitter(img_paths=img_paths, split_factor=args.split_factor, val_idx=0)
-        raw_train, raw_val = splitter.do_splitting()
+        raise NotImplementedError('Not added this yet')
+        # splitter = ImageSplitter(img_paths=img_paths, split_factor=args.split_factor, val_idx=0)
+        # raw_train, raw_val = splitter.do_splitting()
 
 
     else:
