@@ -24,7 +24,6 @@ if __name__ == '__main__':
         if args.from_scratch:
             delete_file('./aug_images')
             delete_file('./split_images')
-
     except:
         make_needed_dirs()
     img_paths = paths_from_dir('./images')

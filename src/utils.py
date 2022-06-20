@@ -16,3 +16,4 @@ args = parser.parse_args()
 
 
 os.environ['CUDA_VISIBLE_DEVICES'] = args.gpu_idx
+os.environ['HOME'] = './temp_home'  ##### REMOVE AFTER HEX MENDED
