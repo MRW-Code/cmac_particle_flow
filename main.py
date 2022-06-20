@@ -20,11 +20,13 @@ from src.training import kfold_model, split_first_model
    '''
 
 if __name__ == '__main__':
-    if args.from_scratch:
-        delete_file('./aug_images')
-        delete_file('./split_images')
+    try:
+        if args.from_scratch:
+            delete_file('./aug_images')
+            delete_file('./split_images')
 
-    make_needed_dirs()
+    except:
+        make_needed_dirs()
     img_paths = paths_from_dir('./images')
 
     if args.cv_method == 'split_first':
