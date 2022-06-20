@@ -24,7 +24,7 @@ def train_fastai_model_classification(model_df, count, exp_type):
 
     metrics = [error_rate, accuracy]
     learn = cnn_learner(dls, resnet18, metrics=metrics).to_fp16()
-    learn.fine_tune(100, cbs=[SaveModelCallback(monitor='accuracy', fname=f'./csd_{args.no_augs}_best_cbs.pth'),
+    learn.fine_tune(100, cbs=[SaveModelCallback(monitor='valid_loss', fname=f'./csd_{args.no_augs}_best_cbs.pth'),
                             ReduceLROnPlateau(monitor='valid_loss',
                                               min_delta=0.05,
                                               patience=2),
@@ -32,8 +32,8 @@ def train_fastai_model_classification(model_df, count, exp_type):
 
     # print(learn.validate())
     ### CHANGE THIS SAVE PATH
-    os.makedirs(f'./checkpoints/{exp_type}/models', exist_ok=True)
-    learn.export(f'./checkpoints/{exp_type}/models/sf{args.split_factor}_fold_{count}.pkl')
+    os.makedirs(f'./checkpoints/{exp_type}/models/sf{args.split_factor}', exist_ok=True)
+    learn.export(f'./checkpoints/{exp_type}/models/sf{args.split_factor}/fold_{count}.pkl')
 
 
 def kfold_model(n_splits):
@@ -66,7 +66,7 @@ def kfold_model(n_splits):
 
         exp_type = 'splitting_test'
         trainer = train_fastai_model_classification(model_df, count, exp_type=exp_type)
-        model = load_learner(f'./checkpoints/{exp_type}/models/sf{args.split_factor}_fold_{count}.pkl', cpu=False)
+        model = load_learner(f'./checkpoints/{exp_type}/models/sf{args.split_factor}/fold_{count}.pkl', cpu=False)
         best_metrics.append(model.final_record)
         count += 1
 
@@ -117,7 +117,7 @@ def split_first_model(n_splits, img_paths):
 
         exp_type = 'split_first'
         trainer = train_fastai_model_classification(model_df, count, exp_type=exp_type)
-        model = load_learner(f'./checkpoints/{exp_type}/models/sf{args.split_factor}_fold_{count}.pkl', cpu=False)
+        model = load_learner(f'./checkpoints/{exp_type}/models/sf{args.split_factor}/fold_{count}.pkl', cpu=False)
         best_metrics.append(model.final_record)
         count += 1
 
