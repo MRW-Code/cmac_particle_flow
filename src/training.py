@@ -32,8 +32,8 @@ def train_fastai_model_classification(model_df, count, exp_type):
 
     # print(learn.validate())
     ### CHANGE THIS SAVE PATH
-    os.makedirs(f'./checkpoints/{exp_type}/models/sf{args.split_factor}', exist_ok=True)
-    learn.export(f'./checkpoints/{exp_type}/models/sf{args.split_factor}/fold_{count}.pkl')
+    os.makedirs(f'./checkpoints/{exp_type}/models/sf3_bs{args.batch_size}', exist_ok=True)
+    learn.export(f'./checkpoints/{exp_type}/models/sf3_bs{args.batch_size}/fold_{count}.pkl')
 
 
 def kfold_model(n_splits):
@@ -66,7 +66,7 @@ def kfold_model(n_splits):
 
         exp_type = 'splitting_test'
         trainer = train_fastai_model_classification(model_df, count, exp_type=exp_type)
-        model = load_learner(f'./checkpoints/{exp_type}/models/sf{args.split_factor}/fold_{count}.pkl', cpu=False)
+        model = load_learner(f'./checkpoints/{exp_type}/models/sf3_bs{args.batch_size}/fold_{count}.pkl', cpu=False)
         best_metrics.append(model.final_record)
         count += 1
 
@@ -117,7 +117,7 @@ def split_first_model(n_splits, img_paths):
 
         exp_type = 'split_first'
         trainer = train_fastai_model_classification(model_df, count, exp_type=exp_type)
-        model = load_learner(f'./checkpoints/{exp_type}/models/sf{args.split_factor}/fold_{count}.pkl', cpu=False)
+        model = load_learner(f'./checkpoints/{exp_type}/models/sf3_bs{args.batch_size}/fold_{count}.pkl', cpu=False)
         best_metrics.append(model.final_record)
         count += 1
 

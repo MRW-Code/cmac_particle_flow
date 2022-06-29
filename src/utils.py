@@ -6,7 +6,7 @@ parser = argparse.ArgumentParser(usage='python main.py')
 parser.add_argument('--gpu_idx', action='store', dest='gpu_idx', default='0',
                   choices=['0', '1', '2', '3', '4', '5'])
 parser.add_argument('-s', '--split_factor', action='store', dest='split_factor', type=int,
-                    default=2, choices=range(0, 15))
+                    default=3, choices=range(0, 60))
 parser.add_argument('-b', '--batch_size', action='store', dest='batch_size', type=int,
                     default=8, choices=range(0, 1000))
 parser.add_argument('--no_augs', action='store_true', dest='no_augs', default=False)
