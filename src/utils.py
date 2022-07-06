@@ -13,6 +13,8 @@ parser.add_argument('--no_augs', action='store_true', dest='no_augs', default=Fa
 parser.add_argument('--from_scratch', action='store_true', dest='from_scratch')
 parser.add_argument('-v', '--cv_method', action='store', dest='cv_method', default='split_first',
                   choices=['kfold', 'crop_fold', 'split_first'])
+parser.add_argument('-g', '--grad_accum', action='store', dest='grad_accum', type=int,
+                    default=1, choices=range(0, 10))
 
 args = parser.parse_args()
 
