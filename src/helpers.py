@@ -1,3 +1,4 @@
+from src.utils import args
 import os
 from pathlib import Path
 import glob
@@ -15,7 +16,7 @@ def make_needed_dirs():
     os.makedirs('./aug_images/Cohesive', exist_ok=True)
     os.makedirs('./aug_images/Easyflowing', exist_ok=True)
     os.makedirs('./aug_images/Freeflowing', exist_ok=True)
-    os.makedirs('./checkpoints/splitting_test/models', exist_ok=True)
+    os.makedirs('./checkpoints/splitting_test/models/{args.model}', exist_ok=True)
     os.makedirs('./checkpoints/splitting_test/figures', exist_ok=True)
     os.makedirs('./split_images/valid/Cohesive', exist_ok=True)
     os.makedirs('./split_images/valid/Easyflowing', exist_ok=True)

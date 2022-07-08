@@ -9,6 +9,7 @@ from src.utils import args
 from src.image_augmenting import ImageAugmentor
 from src.helpers import paths_from_dir
 from src.image_splitting import ImageSplitter
+import timm
 
 
 def train_fastai_model_classification(model_df, count, exp_type):
@@ -23,7 +24,7 @@ def train_fastai_model_classification(model_df, count, exp_type):
                                    shuffle=True)
 
     metrics = [error_rate, accuracy]
-    learn = cnn_learner(dls, resnet18, metrics=metrics).to_fp16()
+    learn = vision_learner(dls, args.model, metrics=metrics).to_fp16()
     if args.grad_accum == 1:
         learn.fine_tune(100, cbs=[SaveModelCallback(monitor='valid_loss', fname=f'./csd_{args.no_augs}_best_cbs.pth'),
                                 ReduceLROnPlateau(monitor='valid_loss',
@@ -40,8 +41,8 @@ def train_fastai_model_classification(model_df, count, exp_type):
 
     # print(learn.validate())
     ### CHANGE THIS SAVE PATH
-    os.makedirs(f'./checkpoints/{exp_type}/models/sf_{args.split_factor}_bs{args.batch_size}_accum{args.grad_accum}', exist_ok=True)
-    learn.export(f'./checkpoints/{exp_type}/models/sf_{args.split_factor}_bs{args.batch_size}_accum{args.grad_accum}/fold_{count}.pkl')
+    os.makedirs(f'./checkpoints/{exp_type}/models/{args.model}/sf_{args.split_factor}_bs{args.batch_size}_accum{args.grad_accum}', exist_ok=True)
+    learn.export(f'./checkpoints/{exp_type}/models/{args.model}/sf_{args.split_factor}_bs{args.batch_size}_accum{args.grad_accum}/fold_{count}.pkl')
 
 
 def kfold_model(n_splits):
@@ -74,7 +75,7 @@ def kfold_model(n_splits):
 
         exp_type = 'splitting_test'
         trainer = train_fastai_model_classification(model_df, count, exp_type=exp_type)
-        model = load_learner(f'./checkpoints/{exp_type}/models/sf_{args.split_factor}_bs{args.batch_size}_accum{args.grad_accum}/fold_{count}.pkl', cpu=False)
+        model = load_learner(f'./checkpoints/{exp_type}/models/{args.model}/sf_{args.split_factor}_bs{args.batch_size}_accum{args.grad_accum}/fold_{count}.pkl', cpu=False)
         best_metrics.append(model.final_record)
         count += 1
 
@@ -125,7 +126,7 @@ def split_first_model(n_splits, img_paths):
 
         exp_type = 'split_first'
         trainer = train_fastai_model_classification(model_df, count, exp_type=exp_type)
-        model = load_learner(f'./checkpoints/{exp_type}/models/sf_{args.split_factor}_bs{args.batch_size}_accum{args.grad_accum}/fold_{count}.pkl', cpu=False)
+        model = load_learner(f'./checkpoints/{exp_type}/models/{args.model}/sf_{args.split_factor}_bs{args.batch_size}_accum{args.grad_accum}/fold_{count}.pkl', cpu=False)
         best_metrics.append(model.final_record)
         count += 1
 

@@ -15,6 +15,8 @@ parser.add_argument('-v', '--cv_method', action='store', dest='cv_method', defau
                   choices=['kfold', 'crop_fold', 'split_first'])
 parser.add_argument('-g', '--grad_accum', action='store', dest='grad_accum', type=int,
                     default=1, choices=range(0, 10))
+parser.add_argument('-m', '--model', action='store', dest='model', default='resnet18',
+                  choices=['resnet18', 'convnext_tiny'])
 
 args = parser.parse_args()
 
