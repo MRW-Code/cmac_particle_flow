@@ -80,6 +80,7 @@ def kfold_model(n_splits):
         count += 1
 
     print(best_metrics)
+    print(f'mean loss = {np.mean([best_metrics[x][2] for x in range(n_splits)])}')
     print(f'mean acc = {np.mean([best_metrics[x][3] for x in range(n_splits)])}')
     return None
 
