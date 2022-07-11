@@ -10,16 +10,15 @@ class Inference:
 
     def __init__(self, learner, split_factor, test_paths):
         self.split_factor = split_factor
-        self.test_paths = test_paths
-        self.test_paths = self.get_paths()
+        self.test_paths = self.get_paths(test_paths)
         self.learner = learner
 
 
-    def get_paths(self):
-        if self.test_paths is None:
-            test_pths = get_image_files(f'{os.getcwd()}/{external_test_set}/')
+    def get_paths(self, test_paths):
+        if test_paths is None:
+            test_pths = get_image_files(f'{os.getcwd()}/external_test_set/')
         else:
-            test_paths = self.test_paths
+            test_paths = test_paths
         return test_pths
 
     def cropping(self, img):
