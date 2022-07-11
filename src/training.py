@@ -144,7 +144,7 @@ def ttv_model(img_paths):
     labels = [pth.parent.name for pth in paths]
 
     X_train, X_val, y_train, y_val = train_test_split(paths, labels,
-                                                        test_size=0.33, random_state=0)
+                                                        test_size=0.2, random_state=0)
     X_val, X_test, y_val, y_test = train_test_split(X_val, y_val,
                                                         test_size=0.5, random_state=0)
 
