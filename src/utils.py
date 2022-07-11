@@ -12,7 +12,7 @@ parser.add_argument('-b', '--batch_size', action='store', dest='batch_size', typ
 parser.add_argument('--no_augs', action='store_true', dest='no_augs', default=False)
 parser.add_argument('--from_scratch', action='store_true', dest='from_scratch')
 parser.add_argument('-v', '--cv_method', action='store', dest='cv_method', default='split_first',
-                  choices=['kfold', 'crop_fold', 'split_first'])
+                  choices=['kfold', 'crop_fold', 'split_first', 'ttv'])
 parser.add_argument('-g', '--grad_accum', action='store', dest='grad_accum', type=int,
                     default=1, choices=range(0, 10))
 parser.add_argument('-m', '--model', action='store', dest='model', default='resnet18',
