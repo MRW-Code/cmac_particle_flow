@@ -28,13 +28,13 @@ def train_fastai_model_classification(model_df, count, exp_type):
     metrics = [error_rate, accuracy]
     learn = vision_learner(dls, args.model, metrics=metrics).to_fp16()
     if args.grad_accum == 1:
-        learn.fine_tune(5, cbs=[SaveModelCallback(monitor='valid_loss', fname=f'./csd_{args.no_augs}_best_cbs.pth'),
+        learn.fine_tune(100, cbs=[SaveModelCallback(monitor='valid_loss', fname=f'./csd_{args.no_augs}_best_cbs.pth'),
                                 ReduceLROnPlateau(monitor='valid_loss',
                                                   min_delta=0.05,
                                                   patience=2),
                                  EarlyStoppingCallback(monitor='accuracy', min_delta=0.1, patience=20)])
     else:
-        learn.fine_tune(5, cbs=[SaveModelCallback(monitor='valid_loss', fname=f'./csd_{args.no_augs}_best_cbs.pth'),
+        learn.fine_tune(100, cbs=[SaveModelCallback(monitor='valid_loss', fname=f'./csd_{args.no_augs}_best_cbs.pth'),
                                 ReduceLROnPlateau(monitor='valid_loss',
                                                   min_delta=0.05,
                                                   patience=2),
