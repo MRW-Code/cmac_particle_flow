@@ -3,7 +3,7 @@ import numpy as np
 from src.image_splitting import ImageSplitter
 from src.image_augmenting import ImageAugmentor
 from src.helpers import paths_from_dir, make_needed_dirs, delete_file
-from src.training import kfold_model, split_first_model
+from src.training import kfold_model, split_first_model, ttv_model
 
 '''
    This script caried out the testing to see how far we could split the images
@@ -37,6 +37,9 @@ if __name__ == '__main__':
             splitter = ImageSplitter(img_paths=img_paths, split_factor=args.split_factor, val_idx=None)
             splitter.save_split_images()
         kfold_model(n_splits=5)
+
+    elif args.cv_method == 'ttv':
+        ttv_model(img_paths=img_paths)
 
 ##### ABOVE HERE WORKS AND TESTED, BELOW HERE NOTHING TESTED YET
 
