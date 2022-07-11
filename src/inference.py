@@ -10,7 +10,7 @@ class Inference:
 
     def __init__(self, learner, split_factor, test_paths):
         self.split_factor = split_factor
-        self.test_paths = self.get_paths(test_paths)
+        self.test_pths = self.get_paths(test_paths)
         self.learner = learner
 
 
