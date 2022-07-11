@@ -41,7 +41,7 @@ class Inference:
                 crops.append(img[points_x[i]:points_x[i] + points_x[1], points_y[j]:points_y[j] + points_y[1]])
 
 
-        crops = [torch.tensor(crop).clone().detach() for crop in crops]
+        crops = [torch.tensor(crop).cpu() for crop in crops]
         return crops
 
     def preprocess_split(self):
