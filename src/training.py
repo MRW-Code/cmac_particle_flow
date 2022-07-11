@@ -180,7 +180,7 @@ def ttv_model(img_paths):
     exp_type = 'ttv'
     trainer = train_fastai_model_classification(model_df, 0, exp_type=exp_type)
     model = load_learner(
-        f'./checkpoints/{exp_type}/models/{args.model}/sf_{args.split_factor}_bs{args.batch_size}_accum{args.grad_accum}/fold_{count}.pkl',
+        f'./checkpoints/{exp_type}/models/{args.model}/sf_{args.split_factor}_bs{args.batch_size}_accum{args.grad_accum}/fold_{0}.pkl',
         cpu=False)
     do_inference = Inference(model, args.split_factor, X_test)
     true_labels, pred_labels, api = do_inference.infer()
