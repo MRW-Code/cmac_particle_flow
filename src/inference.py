@@ -18,7 +18,7 @@ class Inference:
         if test_paths is None:
             test_pths = get_image_files(f'{os.getcwd()}/external_test_set/')
         else:
-            test_paths = test_paths
+            test_pths = test_paths
         return test_pths
 
     def cropping(self, img):
