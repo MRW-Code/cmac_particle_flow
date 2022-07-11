@@ -9,10 +9,11 @@ from store.models.fastai_prep import FastAIPrep
 class Inference:
 
     def __init__(self, learner, split_factor, test_paths):
+        self.test_paths = test_paths
         self.split_factor = split_factor
         self.test_pths = self.get_paths()
         self.learner = learner
-        self.test_paths = test_paths
+
 
     def get_paths(self):
         if self.test_paths is None:
