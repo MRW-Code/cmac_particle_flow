@@ -10,6 +10,7 @@ parser.add_argument('-s', '--split_factor', action='store', dest='split_factor',
 parser.add_argument('-b', '--batch_size', action='store', dest='batch_size', type=int,
                     default=8, choices=range(0, 1000))
 parser.add_argument('--no_augs', action='store_true', dest='no_augs', default=False)
+parser.add_argument('--make_figs', action='store_true', dest='make_figs', default=False)
 parser.add_argument('--from_scratch', action='store_true', dest='from_scratch')
 parser.add_argument('-v', '--cv_method', action='store', dest='cv_method', default='split_first',
                   choices=['kfold', 'crop_fold', 'split_first', 'ttv'])

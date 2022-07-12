@@ -46,6 +46,14 @@ def train_fastai_model_classification(model_df, count, exp_type):
     os.makedirs(f'./checkpoints/{exp_type}/models/{args.model}/sf_{args.split_factor}_bs{args.batch_size}_accum{args.grad_accum}', exist_ok=True)
     learn.export(f'./checkpoints/{exp_type}/models/{args.model}/sf_{args.split_factor}_bs{args.batch_size}_accum{args.grad_accum}/fold_{count}.pkl')
 
+    if args.make_figs:
+        os.makedirs(f'./checkpoints/{exp_type}/models/{args.model}/sf_{args.split_factor}_bs{args.batch_size}_accum{args.grad_accum}', exist_ok=True)
+        learn.recorder.plot_loss()
+        plt.savefig(f'./checkpoints/{exp_type}/models/{args.model}/sf_{args.split_factor}_bs{args.batch_size}_accum{args.grad_accum}_loss_plot_{count}.png')
+
+        interp = ClassificationInterpretation.from_learner(learn)
+        interp.plot_confusion_matrix()
+        plt.savefig(f'./checkpoints/{exp_type}/models/{args.model}/sf_{args.split_factor}_bs{args.batch_size}_accum{args.grad_accum}_confmat_{count}.png')
 
 def kfold_model(n_splits):
     paths = paths_from_dir('./split_images/train')
