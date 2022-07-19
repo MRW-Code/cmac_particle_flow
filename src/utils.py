@@ -15,7 +15,7 @@ parser.add_argument('--from_scratch', action='store_true', dest='from_scratch')
 parser.add_argument('-v', '--cv_method', action='store', dest='cv_method', default='split_first',
                   choices=['kfold', 'crop_fold', 'split_first', 'ttv'])
 parser.add_argument('-g', '--grad_accum', action='store', dest='grad_accum', type=int,
-                    default=1, choices=range(0, 10))
+                    default=1, choices=range(0, 50))
 parser.add_argument('-m', '--model', action='store', dest='model', default='resnet18',
                   choices=['convnext_tiny_in22k', 'resnet18', 'convnext_tiny',
                            'convnext_small', 'resnet50'])
