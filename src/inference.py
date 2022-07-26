@@ -64,7 +64,7 @@ class Inference:
         pred_labels = []
         api = []
         for pth in tqdm.tqdm(self.test_pths):
-            # img_raw = torch.tensor(cv2.imread(str(pth))).to('cuda')
+            img_raw = torch.tensor(cv2.imread(str(pth))).to('cuda')
             # true_labels.append(pth.parent.name)
             # pred_labels.append(self.majority_vote(self.cropping(img_raw)))
             # api.append(pth)
