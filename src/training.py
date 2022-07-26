@@ -144,6 +144,7 @@ def split_first_model(n_splits, img_paths):
         dump = pd.DataFrame({'true': true_labels,
                              'pred': pred_labels,
                              'api': api})
+        os.makedirs('./pred_csv', exist_ok=True)
         dump.to_csv(f'./pred_csv/fold_{count}_preds.csv')
         count += 1
 
