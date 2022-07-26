@@ -64,11 +64,15 @@ class Inference:
         pred_labels = []
         api = []
         for pth in tqdm.tqdm(self.test_pths):
-            img_raw = torch.tensor(cv2.imread(str(pth))).to('cuda')
-            true_labels.append(pth.parent.name)
+            # img_raw = torch.tensor(cv2.imread(str(pth))).to('cuda')
+            # true_labels.append(pth.parent.name)
             # pred_labels.append(self.majority_vote(self.cropping(img_raw)))
-            pred_labels.append(self.cropping(img_raw))
-            api.append(pth)
+            # api.append(pth)
+            crops = self.cropping(img_raw)
+            for crop in crops:
+                true_labels.append(pth.parent.name)
+                pred_labels.append(self.learner.predict(crop))
+                api.append(pth)
         return true_labels, pred_labels, api
 
 
