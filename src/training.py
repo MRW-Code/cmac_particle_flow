@@ -136,9 +136,15 @@ def split_first_model(n_splits, img_paths):
             model_df = pd.concat([aug_df, val_df])
 
         exp_type = 'split_first'
-        trainer = train_fastai_model_classification(model_df, count, exp_type=exp_type)
+        # trainer = train_fastai_model_classification(model_df, count, exp_type=exp_type)
         model = load_learner(f'./checkpoints/{exp_type}/models/{args.model}/sf_{args.split_factor}_bs{args.batch_size}_accum{args.grad_accum}/fold_{count}.pkl', cpu=False)
-        best_metrics.append(model.final_record)
+        # best_metrics.append(model.final_record)
+        do_inference = Inference(model, args.split_factor, X_val)
+        true_labels, pred_labels, api = do_inference.infer()
+        dump = pd.DataFrame({'true': true_labels,
+                             'pred': pred_labels,
+                             'api': api})
+        dump.to_csv(f'./pred_csv/fold_{count}_preds.csv')
         count += 1
 
     print(best_metrics)
