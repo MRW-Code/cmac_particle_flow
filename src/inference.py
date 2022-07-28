@@ -68,11 +68,10 @@ class Inference:
             # true_labels.append(pth.parent.name)
             # pred_labels.append(self.majority_vote(self.cropping(img_raw)))
             # api.append(pth)
-            crops = self.cropping(img_raw)
-            for crop in crops:
-                true_labels.append(pth.parent.name)
-                pred_labels.append(self.learner.predict(crop))
-                api.append(pth)
+
+            true_labels.append(pth.parent.name)
+            pred_labels.append(self.learner.predict(crop))
+            api.append(pth)
         return true_labels, pred_labels, api
 
 
