@@ -64,13 +64,13 @@ class Inference:
         pred_labels = []
         api = []
         for pth in tqdm.tqdm(self.test_pths):
-            img_raw = torch.tensor(cv2.imread(str(pth))).to('cuda')
+            img_raw = torch.tensor(cv2.imread(str(pth)), device='cuda')
             # true_labels.append(pth.parent.name)
             # pred_labels.append(self.majority_vote(self.cropping(img_raw)))
             # api.append(pth)
 
             true_labels.append(pth.parent.name)
-            pred_labels.append(self.learner.predict(img_raw).cpu())
+            pred_labels.append(self.learner.predict(img_raw.cpu()))
             api.append(pth)
         return true_labels, pred_labels, api
 
