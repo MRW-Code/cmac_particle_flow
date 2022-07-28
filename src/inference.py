@@ -70,7 +70,7 @@ class Inference:
             # api.append(pth)
 
             true_labels.append(pth.parent.name)
-            pred_labels.append(self.learner.predict(img_raw))
+            pred_labels.append(self.learner.predict(img_raw).cpu())
             api.append(pth)
         return true_labels, pred_labels, api
 
