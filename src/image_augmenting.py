@@ -16,6 +16,7 @@ class ImageAugmentor():
         (h, w) = img.shape[:2]
         center = (w / 2, h / 2)
         rotated_images = []
+        rotated_images.append(img)
         for i in range(num_rotations):
             rotations = list(range(0, 180, num_rotations))
             M = cv2.getRotationMatrix2D(center, rotations[i], 1.0)
@@ -42,7 +43,7 @@ class ImageAugmentor():
                 path, label = i[1]['fname'], i[1]['label']
                 name = path.name
                 img = cv2.imread(str(path))
-                rotated = self.rotating(img, 6)
+                rotated = self.rotating(img, 2)
                 for rot in rotated:
                     flipped = self.flipping(rot)
                     for flip in flipped:

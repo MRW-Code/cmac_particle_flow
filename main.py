@@ -3,7 +3,7 @@ import numpy as np
 from src.image_splitting import ImageSplitter
 from src.image_augmenting import ImageAugmentor
 from src.helpers import paths_from_dir, make_needed_dirs, delete_file
-from src.training import kfold_model, split_first_model, ttv_model
+from src.training import kfold_model, split_first_model, ttv_model, kfold_ttv_model
 
 '''
    This script caried out the testing to see how far we could split the images
@@ -13,7 +13,7 @@ from src.training import kfold_model, split_first_model, ttv_model
    Here, in the splitter class:
    Split_factor controls the number of images to split into. 
    0 uses the native images. 1 splits them in half vertically. For n where n is greater than 1,
-   there will be n**2 images e.g split factor = 3 gives 9 images. 
+   there will be 2**n images e.g split factor = 3 gives 9 images. 
 
    val_idx is the index of the split to be used as testing. It can take any value up to the
    number of crops of the original image (uses zero indexing). 
@@ -41,6 +41,12 @@ if __name__ == '__main__':
     elif args.cv_method == 'ttv':
         ttv_model(img_paths=img_paths)
 
+    elif args.cv_method == 'kfold_ttv':
+        kfold_ttv_model(img_paths=img_paths, n_splits=5, test_pct=0.5)
+
+
+
+
 ##### ABOVE HERE WORKS AND TESTED, BELOW HERE NOTHING TESTED YET
 
     elif args.cv_method == 'crop_fold':
@@ -51,9 +57,6 @@ if __name__ == '__main__':
 
     else:
         raise NotImplementedError('No Such CV method')
-
-
-
 
     # # check here if we need a val split here for when val_idx is none
     # if raw_val is None:
@@ -66,11 +69,6 @@ if __name__ == '__main__':
     # if not args.no_augs:
     #     aug = ImageAugmentor(save_path='./aug_images', training_data=raw_train)
     #     test = aug.do_augs()
-
-
-
-
-
 
 
     # make split factor and val_idx args

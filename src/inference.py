@@ -59,7 +59,7 @@ class Inference:
         ans = mode([i[0] for i in vote])
         return ans
 
-    def infer(self):
+    def infer_majority(self):
         true_labels = []
         pred_labels = []
         api = []
@@ -68,6 +68,29 @@ class Inference:
             true_labels.append(pth.parent.name)
             pred_labels.append(self.majority_vote(self.cropping(img_raw)))
             api.append(pth)
+        return true_labels, pred_labels, api
+
+    def single_vote(self, stack):
+        vote = []
+
+        for img in stack:
+            pred = self.learner.predict(img)
+            vote.append(pred)
+        ans = [i[0] for i in vote]
+        return ans
+
+    def infer_single(self):
+        true_labels = []
+        pred_labels = []
+        api = []
+        for pth in tqdm.tqdm(self.test_pths):
+            img_raw = torch.tensor(cv2.imread(str(pth))).to('cuda')
+            img_crops = self.cropping(img_raw)
+            for crop in img_crops:
+                true_labels.append(pth.parent.name)
+                pred = self.learner.predict(crop)
+                pred_labels.append(pred[0])
+                api.append(pth)
         return true_labels, pred_labels, api
 
 
