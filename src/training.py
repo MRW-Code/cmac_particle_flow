@@ -265,11 +265,19 @@ def kfold_ttv_model(n_splits, img_paths, test_pct):
         true_labels, pred_labels, api = do_inference.infer_majority()
         maj_acc = accuracy_score(true_labels, pred_labels)
         best_test_majority.append(maj_acc)
+        maj_df = pd.DataFrame({'true': true_labels,
+                              'preds': pred_labels,
+                              'api': api})
+        maj_df.to_csv(f'./pred_csv/external_test_majority_fold_{count}.csv')
 
         # Not majority
         true_labels, pred_labels, api = do_inference.infer_single()
         single_acc = accuracy_score(true_labels, pred_labels)
         best_test_single.append(single_acc)
+        single_df = pd.DataFrame({'true': true_labels,
+                               'preds': pred_labels,
+                               'api': api})
+        single_df.to_csv(f'./pred_csv/external_test_single_fold_{count}.csv')
 
         print(f'fold {count}, mean loss = {np.mean([best_val_metrics[x][2] for x in range(count+1)])}')
         print(f'fold {count}, mean val acc = {np.mean([best_val_metrics[x][3] for x in range(count+1)])}')
