@@ -27,11 +27,11 @@ class ImageAugmentor():
     def flipping(self, img):
         flipped_images = []
         originalImage = img
-        flipVertical = cv2.flip(originalImage, 0)
-        flipHorizontal = cv2.flip(originalImage, 1)
+        # flipVertical = cv2.flip(originalImage, 0)
+        # flipHorizontal = cv2.flip(originalImage, 1)
         flipBoth = cv2.flip(originalImage, -1)
-        flipped_images.append(flipVertical)
-        flipped_images.append(flipHorizontal)
+        # flipped_images.append(flipVertical)
+        # flipped_images.append(flipHorizontal)
         flipped_images.append(flipBoth)
         return flipped_images
 
