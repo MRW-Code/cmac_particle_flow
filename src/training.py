@@ -1,5 +1,5 @@
 import os
-
+import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import StratifiedKFold, train_test_split
@@ -19,7 +19,7 @@ def train_fastai_model_classification(model_df, count, exp_type):
                                    fn_col=0,
                                    label_col=1,
                                    valid_col=2,
-                                   item_tfms=None,
+                                   item_tfms=Resize(384),
                                    batch_tfms=None,
                                    y_block=CategoryBlock(),
                                    bs=args.batch_size,
@@ -28,13 +28,13 @@ def train_fastai_model_classification(model_df, count, exp_type):
     metrics = [error_rate, accuracy]
     learn = vision_learner(dls, args.model, metrics=metrics).to_fp16()
     if args.grad_accum == 1:
-        learn.fine_tune(100, cbs=[SaveModelCallback(monitor='valid_loss', fname=f'./csd_{args.no_augs}_best_cbs.pth'),
+        learn.fine_tune(5, cbs=[SaveModelCallback(monitor='valid_loss', fname=f'./csd_{args.no_augs}_best_cbs.pth'),
                                 ReduceLROnPlateau(monitor='valid_loss',
                                                   min_delta=0.05,
                                                   patience=2),
                                  EarlyStoppingCallback(monitor='accuracy', min_delta=0.1, patience=10)])
     else:
-        learn.fine_tune(100, cbs=[SaveModelCallback(monitor='valid_loss', fname=f'./csd_{args.no_augs}_best_cbs.pth'),
+        learn.fine_tune(5, cbs=[SaveModelCallback(monitor='valid_loss', fname=f'./csd_{args.no_augs}_best_cbs.pth'),
                                 ReduceLROnPlateau(monitor='valid_loss',
                                                   min_delta=0.05,
                                                   patience=2),
@@ -48,6 +48,9 @@ def train_fastai_model_classification(model_df, count, exp_type):
 
     if args.make_figs:
         os.makedirs(f'./checkpoints/{exp_type}/models/{args.model}/sf_{args.split_factor}_bs{args.batch_size}_accum{args.grad_accum}', exist_ok=True)
+        plt.cla()
+        plt.clf()
+        plt.close()
         learn.recorder.plot_loss()
         plt.savefig(f'./checkpoints/{exp_type}/models/{args.model}/sf_{args.split_factor}_bs{args.batch_size}_accum{args.grad_accum}_loss_plot_{count}.png',
                     bbox='tight')

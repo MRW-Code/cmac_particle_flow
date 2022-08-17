@@ -18,7 +18,8 @@ parser.add_argument('-g', '--grad_accum', action='store', dest='grad_accum', typ
                     default=1, choices=range(0, 50))
 parser.add_argument('-m', '--model', action='store', dest='model', default='resnet18',
                   choices=['convnext_tiny_in22k', 'resnet18', 'convnext_tiny',
-                           'convnext_small', 'resnet50'])
+                           'convnext_small', 'resnet50', 'vit_tiny_patch16_384',
+                           'swinv2_tiny_window16_256'])
 
 args = parser.parse_args()
 
