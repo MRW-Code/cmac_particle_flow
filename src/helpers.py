@@ -24,7 +24,7 @@ def make_needed_dirs():
     os.makedirs('./split_images/train/Cohesive', exist_ok=True)
     os.makedirs('./split_images/train/Easyflowing', exist_ok=True)
     os.makedirs('./split_images/train/Freeflowing', exist_ok=True)
-    os.makedirs('./preds_csv', exist_ok=True)
+    os.makedirs('./pred_csv', exist_ok=True)
 
 def delete_file(path):
     shutil.rmtree(path)
