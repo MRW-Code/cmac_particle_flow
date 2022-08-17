@@ -38,7 +38,7 @@ def train_fastai_model_classification(model_df, count, exp_type):
                                 ReduceLROnPlateau(monitor='valid_loss',
                                                   min_delta=0.05,
                                                   patience=2),
-                                 EarlyStoppingCallback(monitor='accuracy', min_delta=0.1, patience=5),
+                                 EarlyStoppingCallback(monitor='accuracy', min_delta=0.1, patience=20),
                                   GradientAccumulation(n_acc=args.grad_accum)])
 
     # print(learn.validate())
