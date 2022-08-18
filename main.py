@@ -6,7 +6,7 @@ from src.helpers import paths_from_dir, make_needed_dirs, delete_file
 from src.training import kfold_model, split_first_model, ttv_model, kfold_ttv_model
 
 '''
-   This script caried out the testing to see how far we could split the images
+   This script carried out the testing to see how far we could split the images
    before the properties of the bulk material were no longer represented by the 
    sample image. 
 
