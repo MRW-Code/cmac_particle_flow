@@ -21,6 +21,21 @@ python3 main.py -b 32 -v kfold_ttv --from_scratch --make_figs -m vit_tiny_patch1
 python3 main.py -b 32 -v kfold_ttv --from_scratch --make_figs -m vit_tiny_patch16_384 --split_factor 25 2>&1 | tee ./vit_out_new/split_factor_25.txt
 python3 main.py -b 32 -v kfold_ttv --from_scratch --make_figs -m vit_tiny_patch16_384 --split_factor 30 2>&1 | tee ./vit_out_new/split_factor_30.txt
 
+mkdir ./vit_out_new_repeat
+python3 main.py -b 32 -v kfold_ttv --from_scratch --make_figs -m vit_tiny_patch16_384 --split_factor 1 2>&1 | tee ./vit_out_new_repeat/split_factor_1.txt
+python3 main.py -b 32 -v kfold_ttv --from_scratch --make_figs -m vit_tiny_patch16_384 --split_factor 2 2>&1 | tee ./vit_out_new_repeat/split_factor_2.txt
+python3 main.py -b 32 -v kfold_ttv --from_scratch --make_figs -m vit_tiny_patch16_384 --split_factor 3 2>&1 | tee ./vit_out_new_repeat/split_factor_3.txt
+python3 main.py -b 32 -v kfold_ttv --from_scratch --make_figs -m vit_tiny_patch16_384 --split_factor 4 2>&1 | tee ./vit_out_new_repeat/split_factor_4.txt
+python3 main.py -b 32 -v kfold_ttv --from_scratch --make_figs -m vit_tiny_patch16_384 --split_factor 5 2>&1 | tee ./vit_out_new_repeat/split_factor_5.txt
+python3 main.py -b 32 -v kfold_ttv --from_scratch --make_figs -m vit_tiny_patch16_384 --split_factor 6 2>&1 | tee ./vit_out_new_repeat/split_factor_6.txt
+python3 main.py -b 32 -v kfold_ttv --from_scratch --make_figs -m vit_tiny_patch16_384 --split_factor 7 2>&1 | tee ./vit_out_new_repeat/split_factor_7.txt
+python3 main.py -b 32 -v kfold_ttv --from_scratch --make_figs -m vit_tiny_patch16_384 --split_factor 8 2>&1 | tee ./vit_out_new_repeat/split_factor_8.txt
+python3 main.py -b 32 -v kfold_ttv --from_scratch --make_figs -m vit_tiny_patch16_384 --split_factor 9 2>&1 | tee ./vit_out_new_repeat/split_factor_9.txt
+python3 main.py -b 32 -v kfold_ttv --from_scratch --make_figs -m vit_tiny_patch16_384 --split_factor 10 2>&1 | tee ./vit_out_new_repeat/split_factor_10.txt
+python3 main.py -b 32 -v kfold_ttv --from_scratch --make_figs -m vit_tiny_patch16_384 --split_factor 15 2>&1 | tee ./vit_out_new_repeat/split_factor_15.txt
+python3 main.py -b 32 -v kfold_ttv --from_scratch --make_figs -m vit_tiny_patch16_384 --split_factor 20 2>&1 | tee ./vit_out_new_repeat/split_factor_20.txt
+python3 main.py -b 32 -v kfold_ttv --from_scratch --make_figs -m vit_tiny_patch16_384 --split_factor 25 2>&1 | tee ./vit_out_new_repeat/split_factor_25.txt
+python3 main.py -b 32 -v kfold_ttv --from_scratch --make_figs -m vit_tiny_patch16_384 --split_factor 30 2>&1 | tee ./vit_out_new_repeat/split_factor_30.txt
 
 
 
