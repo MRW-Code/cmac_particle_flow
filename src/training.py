@@ -28,17 +28,17 @@ def train_fastai_model_classification(model_df, count, exp_type):
     metrics = [error_rate, accuracy]
     learn = vision_learner(dls, args.model, metrics=metrics).to_fp16()
     if args.grad_accum == 1:
-        learn.fine_tune(50, cbs=[SaveModelCallback(monitor='valid_loss', fname=f'./csd_{args.no_augs}_best_cbs.pth'),
+        learn.fine_tune(10, cbs=[SaveModelCallback(monitor='valid_loss', fname=f'./csd_{args.no_augs}_best_cbs.pth'),
                                 ReduceLROnPlateau(monitor='valid_loss',
                                                   min_delta=0.05,
                                                   patience=5),
-                                 EarlyStoppingCallback(monitor='accuracy', min_delta=0.1, patience=10)])
+                                 EarlyStoppingCallback(monitor='accuracy', min_delta=0.1, patience=5)])
     else:
-        learn.fine_tune(50, cbs=[SaveModelCallback(monitor='valid_loss', fname=f'./csd_{args.no_augs}_best_cbs.pth'),
+        learn.fine_tune(10, cbs=[SaveModelCallback(monitor='valid_loss', fname=f'./csd_{args.no_augs}_best_cbs.pth'),
                                 ReduceLROnPlateau(monitor='valid_loss',
                                                   min_delta=0.05,
                                                   patience=5),
-                                 EarlyStoppingCallback(monitor='accuracy', min_delta=0.1, patience=10),
+                                 EarlyStoppingCallback(monitor='accuracy', min_delta=0.1, patience=5),
                                   GradientAccumulation(n_acc=args.grad_accum)])
 
     # print(learn.validate())
