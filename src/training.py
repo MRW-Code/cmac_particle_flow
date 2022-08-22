@@ -15,11 +15,17 @@ import timm
 
 
 def train_fastai_model_classification(model_df, count, exp_type):
+
+    if args.no_resize:
+        tfms = None
+    else:
+        tfms = Resize(384)
+
     dls = ImageDataLoaders.from_df(model_df,
                                    fn_col=0,
                                    label_col=1,
                                    valid_col=2,
-                                   item_tfms=Resize(384),
+                                   item_tfms=tfms,
                                    batch_tfms=None,
                                    y_block=CategoryBlock(),
                                    bs=args.batch_size,
