@@ -229,7 +229,7 @@ def kfold_ttv_model(n_splits, img_paths, test_pct):
         X_train, X_val = np.array(paths)[train_index], np.array(paths)[val_index]
         y_train, y_val = np.array(labels)[train_index], np.array(labels)[val_index]
         X_val, X_test, y_val, y_test = train_test_split(X_val, y_val,
-                                                        test_size=0.5, random_state=0)
+                                                        test_size=test_pct, random_state=0)
 
 
 
@@ -262,13 +262,14 @@ def kfold_ttv_model(n_splits, img_paths, test_pct):
             aug_df.loc[:, 'is_valid'] = 0
             model_df = pd.concat([aug_df, val_df])
 
-        exp_type = 'ttv_kfold'
+        exp_type = 'ttv_kfold_best'
         trainer = train_fastai_model_classification(model_df, count, exp_type=exp_type)
         model = load_learner(
             f'./checkpoints/{exp_type}/models/{args.model}/sf_{args.split_factor}_bs{args.batch_size}_accum{args.grad_accum}/fold_{count}.pkl',
             cpu=False)
         best_val_metrics.append(model.final_record)
 
+        os.makedirs(f'./pred_csv/{exp_type}/{args.split_factor}', exist_ok=True)
         # majority vote
         do_inference = Inference(model, args.split_factor, X_test)
         true_labels, pred_labels, api = do_inference.infer_majority()
@@ -277,7 +278,7 @@ def kfold_ttv_model(n_splits, img_paths, test_pct):
         maj_df = pd.DataFrame({'true': true_labels,
                               'preds': pred_labels,
                               'api': api})
-        maj_df.to_csv(f'./pred_csv/external_test_majority_fold_{count}.csv')
+        maj_df.to_csv(f'./pred_csv/{exp_type}/{args.split_factor}/external_test_majority_fold_{count}.csv')
 
         # Not majority
         true_labels, pred_labels, api = do_inference.infer_single()
@@ -286,7 +287,7 @@ def kfold_ttv_model(n_splits, img_paths, test_pct):
         single_df = pd.DataFrame({'true': true_labels,
                                'preds': pred_labels,
                                'api': api})
-        single_df.to_csv(f'./pred_csv/external_test_single_fold_{count}.csv')
+        single_df.to_csv(f'./pred_csv/{exp_type}/{args.split_factor}/external_test_single_fold_{count}.csv')
 
         print(f'fold {count}, mean loss = {np.mean([best_val_metrics[x][2] for x in range(count+1)])}')
         print(f'fold {count}, mean val acc = {np.mean([best_val_metrics[x][3] for x in range(count+1)])}')

@@ -36,6 +36,8 @@
 #python3 main.py -b 32 -v kfold_ttv --from_scratch --make_figs -m vit_tiny_patch16_384 --split_factor 20 2>&1 | tee ./vit_out_new_repeat/split_factor_20.txt
 #python3 main.py -b 32 -v kfold_ttv --from_scratch --make_figs -m vit_tiny_patch16_384 --split_factor 25 2>&1 | tee ./vit_out_new_repeat/split_factor_25.txt
 #python3 main.py -b 32 -v kfold_ttv --from_scratch --make_figs -m vit_tiny_patch16_384 --split_factor 30 2>&1 | tee ./vit_out_new_repeat/split_factor_30.txt
+#python3 main.py -b 32 -v kfold_ttv --from_scratch --make_figs -m vit_tiny_patch16_384 --split_factor 15 2>&1 | tee ./vit_out_new_repeat/split_factor_15_2.txt
+#python3 main.py -b 32 -v kfold_ttv --from_scratch --make_figs -m vit_tiny_patch16_384 --split_factor 20 2>&1 | tee ./vit_out_new_repeat/split_factor_20_2.txt
 
 
 ## To Run
@@ -85,14 +87,29 @@
 #python3 main.py -b 32 -v kfold_ttv --from_scratch --make_figs -m resnet18 --split_factor 10 2>&1 | tee ./model_testing_repeat_2/resnet18_sf_10.txt
 #python3 main.py -b 32 -v kfold_ttv --from_scratch --make_figs -m convnext_tiny --split_factor 10 2>&1 | tee ./model_testing_repeat_2/convnext_tiny_sf_10.txt
 
-mkdir ./resnet_split_factor
-python3 main.py -b 32 -v kfold_ttv --from_scratch -m resnet18 --split_factor 2 --no_resize --gpu_idx 1  2>&1 | tee ./resnet_split_factor/split_factor_2.txt
-python3 main.py -b 32 -v kfold_ttv --from_scratch -m resnet18 --split_factor 4 --no_resize --gpu_idx 1  2>&1 | tee ./resnet_split_factor/split_factor_4.txt
-python3 main.py -b 32 -v kfold_ttv --from_scratch -m resnet18 --split_factor 6 --no_resize --gpu_idx 1  2>&1 | tee ./resnet_split_factor/split_factor_6.txt
-python3 main.py -b 32 -v kfold_ttv --from_scratch -m resnet18 --split_factor 8 --no_resize --gpu_idx 1  2>&1 | tee ./resnet_split_factor/split_factor_8.txt
-python3 main.py -b 32 -v kfold_ttv --from_scratch -m resnet18 --split_factor 10 --no_resize --gpu_idx 1 2>&1 | tee ./resnet_split_factor/split_factor_10.txt
-python3 main.py -b 32 -v kfold_ttv --from_scratch -m resnet18 --split_factor 1 --no_resize --gpu_idx 1  2>&1 | tee ./resnet_split_factor/split_factor_1.txt
-python3 main.py -b 32 -v kfold_ttv --from_scratch -m resnet18 --split_factor 3 --no_resize --gpu_idx 1  2>&1 | tee ./resnet_split_factor/split_factor_3.txt
-python3 main.py -b 32 -v kfold_ttv --from_scratch -m resnet18 --split_factor 5 --no_resize --gpu_idx 1  2>&1 | tee ./resnet_split_factor/split_factor_5.txt
-python3 main.py -b 32 -v kfold_ttv --from_scratch -m resnet18 --split_factor 7 --no_resize --gpu_idx 1  2>&1 | tee ./resnet_split_factor/split_factor_7.txt
-python3 main.py -b 32 -v kfold_ttv --from_scratch -m resnet18 --split_factor 9 --no_resize --gpu_idx 1  2>&1 | tee ./resnet_split_factor/split_factor_9.txt
+## New Split Factor Testing
+#mkdir ./resnet_split_factor
+#python3 main.py -b 8 -v kfold_ttv --from_scratch -m resnet18 --split_factor 2 --no_resize  2>&1 | tee ./resnet_split_factor/split_factor_2.txt
+#python3 main.py -b 8 -v kfold_ttv --from_scratch -m resnet18 --split_factor 4 --no_resize  2>&1 | tee ./resnet_split_factor/split_factor_4.txt
+#python3 main.py -b 8 -v kfold_ttv --from_scratch -m resnet18 --split_factor 6 --no_resize  2>&1 | tee ./resnet_split_factor/split_factor_6.txt
+#python3 main.py -b 8 -v kfold_ttv --from_scratch -m resnet18 --split_factor 8 --no_resize  2>&1 | tee ./resnet_split_factor/split_factor_8.txt
+#python3 main.py -b 8 -v kfold_ttv --from_scratch -m resnet18 --split_factor 10 --no_resize 2>&1 | tee ./resnet_split_factor/split_factor_10.txt
+#python3 main.py -b 8 -v kfold_ttv --from_scratch -m resnet18 --split_factor 1 --no_resize  2>&1 | tee ./resnet_split_factor/split_factor_1.txt
+#python3 main.py -b 8 -v kfold_ttv --from_scratch -m resnet18 --split_factor 3 --no_resize  2>&1 | tee ./resnet_split_factor/split_factor_3.txt
+#python3 main.py -b 8 -v kfold_ttv --from_scratch -m resnet18 --split_factor 5 --no_resize  2>&1 | tee ./resnet_split_factor/split_factor_5.txt
+#python3 main.py -b 8 -v kfold_ttv --from_scratch -m resnet18 --split_factor 7 --no_resize  2>&1 | tee ./resnet_split_factor/split_factor_7.txt
+#python3 main.py -b 8 -v kfold_ttv --from_scratch -m resnet18 --split_factor 9 --no_resize  2>&1 | tee ./resnet_split_factor/split_factor_9.txt
+
+#mkdir ./resnet_split_factor_repeat1
+#python3 main.py -b 8 -v kfold_ttv --from_scratch -m resnet18 --split_factor 2 --no_resize  2>&1 | tee ./resnet_split_factor_repeat1/split_factor_2.txt
+#python3 main.py -b 8 -v kfold_ttv --from_scratch -m resnet18 --split_factor 4 --no_resize  2>&1 | tee ./resnet_split_factor_repeat1/split_factor_4.txt
+#python3 main.py -b 8 -v kfold_ttv --from_scratch -m resnet18 --split_factor 6 --no_resize  2>&1 | tee ./resnet_split_factor_repeat1/split_factor_6.txt
+#python3 main.py -b 8 -v kfold_ttv --from_scratch -m resnet18 --split_factor 8 --no_resize  2>&1 | tee ./resnet_split_factor_repeat1/split_factor_8.txt
+#python3 main.py -b 8 -v kfold_ttv --from_scratch -m resnet18 --split_factor 10 --no_resize 2>&1 | tee ./resnet_split_factor_repeat1/split_factor_10.txt
+#
+#mkdir ./resnet_split_factor_repeat2
+#python3 main.py -b 8 -v kfold_ttv --from_scratch -m resnet18 --split_factor 2 --no_resize  2>&1 | tee ./resnet_split_factor_repeat2/split_factor_2.txt
+#python3 main.py -b 8 -v kfold_ttv --from_scratch -m resnet18 --split_factor 4 --no_resize  2>&1 | tee ./resnet_split_factor_repeat2/split_factor_4.txt
+#python3 main.py -b 8 -v kfold_ttv --from_scratch -m resnet18 --split_factor 6 --no_resize  2>&1 | tee ./resnet_split_factor_repeat2/split_factor_6.txt
+#python3 main.py -b 8 -v kfold_ttv --from_scratch -m resnet18 --split_factor 8 --no_resize  2>&1 | tee ./resnet_split_factor_repeat2/split_factor_8.txt
+#python3 main.py -b 8 -v kfold_ttv --from_scratch -m resnet18 --split_factor 10 --no_resize 2>&1 | tee ./resnet_split_factor_repeat2/split_factor_10.txt
