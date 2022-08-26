@@ -27,12 +27,12 @@ class ImageAugmentor():
     def flipping(self, img):
         flipped_images = []
         originalImage = img
-        flipVertical = cv2.flip(originalImage, 0)
-        flipHorizontal = cv2.flip(originalImage, 1)
-        # flipBoth = cv2.flip(originalImage, -1)
-        flipped_images.append(flipVertical)
-        flipped_images.append(flipHorizontal)
-        # flipped_images.append(flipBoth)
+        # flipVertical = cv2.flip(originalImage, 0)
+        # flipHorizontal = cv2.flip(originalImage, 1)
+        flipBoth = cv2.flip(originalImage, -1)
+        # flipped_images.append(flipVertical)
+        # flipped_images.append(flipHorizontal)
+        flipped_images.append(flipBoth)
         return flipped_images
 
     def do_augs(self):
@@ -43,7 +43,7 @@ class ImageAugmentor():
                 path, label = i[1]['fname'], i[1]['label']
                 name = path.name
                 img = cv2.imread(str(path))
-                rotated = self.rotating(img, 4)
+                rotated = self.rotating(img, 2)
                 for rot in rotated:
                     flipped = self.flipping(rot)
                     for flip in flipped:
