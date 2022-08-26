@@ -8,7 +8,7 @@ from tqdm import tqdm
 from fastai.vision.all import *
 from src.utils import args
 from src.image_augmenting import ImageAugmentor
-from src.helpers import paths_from_dir
+from src.helpers import paths_from_dir, delete_file, make_needed_dirs
 from src.image_splitting import ImageSplitter
 from src.inference import Inference
 import timm
@@ -34,13 +34,13 @@ def train_fastai_model_classification(model_df, count, exp_type):
     metrics = [error_rate, accuracy]
     learn = vision_learner(dls, args.model, metrics=metrics).to_fp16()
     if args.grad_accum == 1:
-        learn.fine_tune(10, cbs=[SaveModelCallback(monitor='valid_loss', fname=f'./csd_{args.no_augs}_best_cbs.pth'),
+        learn.fine_tune(5, cbs=[SaveModelCallback(monitor='valid_loss', fname=f'./csd_{args.no_augs}_best_cbs.pth'),
                                 ReduceLROnPlateau(monitor='valid_loss',
                                                   min_delta=0.05,
                                                   patience=5),
                                  EarlyStoppingCallback(monitor='accuracy', min_delta=0.1, patience=5)])
     else:
-        learn.fine_tune(10, cbs=[SaveModelCallback(monitor='valid_loss', fname=f'./csd_{args.no_augs}_best_cbs.pth'),
+        learn.fine_tune(5, cbs=[SaveModelCallback(monitor='valid_loss', fname=f'./csd_{args.no_augs}_best_cbs.pth'),
                                 ReduceLROnPlateau(monitor='valid_loss',
                                                   min_delta=0.05,
                                                   patience=5),
@@ -262,7 +262,7 @@ def kfold_ttv_model(n_splits, img_paths, test_pct):
             aug_df.loc[:, 'is_valid'] = 0
             model_df = pd.concat([aug_df, val_df])
 
-        exp_type = 'ttv_kfold_best'
+        exp_type = 'ttv_kfold_bug'
         trainer = train_fastai_model_classification(model_df, count, exp_type=exp_type)
         model = load_learner(
             f'./checkpoints/{exp_type}/models/{args.model}/sf_{args.split_factor}_bs{args.batch_size}_accum{args.grad_accum}/fold_{count}.pkl',
@@ -293,6 +293,10 @@ def kfold_ttv_model(n_splits, img_paths, test_pct):
         print(f'fold {count}, mean val acc = {np.mean([best_val_metrics[x][3] for x in range(count+1)])}')
         print(f'fold {count}, mean maj test acc = {np.mean(best_test_majority)}')
         print(f'fold {count}, mean single test acc = {np.mean(best_test_single)}')
+
+        delete_file('./aug_images')
+        delete_file('./split_images')
+        make_needed_dirs()
 
 
         count += 1

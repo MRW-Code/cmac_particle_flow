@@ -6,7 +6,7 @@ from sklearn.metrics import confusion_matrix
 import numpy as np
 from src.utils import args
 
-df_list = os.listdir(f'pred_csv/ttv_kfold_best')
+df_list = os.listdir(f'pred_csv/ttv_kfold_best/{args.split_factor}')
 print(df_list)
 
 ## for majority vote
