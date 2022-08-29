@@ -20,7 +20,8 @@ parser.add_argument('-m', '--model', action='store', dest='model', default='resn
                   choices=['convnext_tiny_in22k', 'resnet18', 'convnext_tiny',
                            'convnext_small', 'resnet50', 'vit_tiny_patch16_384',
                            'swinv2_tiny_window16_256', 'swinv2_cr_tiny_384',
-                           'vit_small_patch16_384', 'vit_small_patch32_384', 'swinv2_cr_tiny_384'])
+                           'vit_small_patch16_384', 'vit_small_patch32_384', 'swinv2_cr_tiny_384',
+                           'swinv2_base_window12to24_192to384_22kft1k'])
 parser.add_argument('--no_resize', action='store_true', dest='no_resize')
 args = parser.parse_args()
 
