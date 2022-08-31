@@ -74,37 +74,37 @@ python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base
 
 ## SWIN MODEL SF TESTING
 mkdir ./swin_out_new_leak
-python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 1 --gpu_idx 1 2>&1 | tee ./swin_out_new_leak/split_factor_1.txt
-python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 2 --gpu_idx 1 2>&1 | tee ./swin_out_new_leak/split_factor_2.txt
-python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 3 --gpu_idx 1 2>&1 | tee ./swin_out_new_leak/split_factor_3.txt
-python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 4 --gpu_idx 1 2>&1 | tee ./swin_out_new_leak/split_factor_4.txt
-python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 5 --gpu_idx 1 2>&1 | tee ./swin_out_new_leak/split_factor_5.txt
-python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 6 --gpu_idx 1 2>&1 | tee ./swin_out_new_leak/split_factor_6.txt
-python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 7 --gpu_idx 1 2>&1 | tee ./swin_out_new_leak/split_factor_7.txt
-python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 8 --gpu_idx 1 2>&1 | tee ./swin_out_new_leak/split_factor_8.txt
-python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 9 --gpu_idx 1 2>&1 | tee ./swin_out_new_leak/split_factor_9.txt
-python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 10 --gpu_idx 1 2>&1 | tee .swin_out_new_leak/split_factor_10.txt
+python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 1 --gpu_idx 0 2>&1 | tee ./swin_out_new_leak/split_factor_1.txt
+python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 2 --gpu_idx 0 2>&1 | tee ./swin_out_new_leak/split_factor_2.txt
+python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 3 --gpu_idx 0 2>&1 | tee ./swin_out_new_leak/split_factor_3.txt
+python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 4 --gpu_idx 0 2>&1 | tee ./swin_out_new_leak/split_factor_4.txt
+python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 5 --gpu_idx 0 2>&1 | tee ./swin_out_new_leak/split_factor_5.txt
+python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 6 --gpu_idx 0 2>&1 | tee ./swin_out_new_leak/split_factor_6.txt
+python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 7 --gpu_idx 0 2>&1 | tee ./swin_out_new_leak/split_factor_7.txt
+python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 8 --gpu_idx 0 2>&1 | tee ./swin_out_new_leak/split_factor_8.txt
+python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 9 --gpu_idx 0 2>&1 | tee ./swin_out_new_leak/split_factor_9.txt
+python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 10 --gpu_idx 0 2>&1 | tee .swin_out_new_leak/split_factor_10.txt
 
 mkdir ./swin_out_new_leak_repeat_leak
-python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 1 --gpu_idx 1 2>&1 | tee ./swin_out_new_leak_repeat_leak/split_factor_1.txt
-python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 2 --gpu_idx 1 2>&1 | tee ./swin_out_new_leak_repeat_leak/split_factor_2.txt
-python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 3 --gpu_idx 1 2>&1 | tee ./swin_out_new_leak_repeat_leak/split_factor_3.txt
-python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 4 --gpu_idx 1 2>&1 | tee ./swin_out_new_leak_repeat_leak/split_factor_4.txt
-python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 5 --gpu_idx 1 2>&1 | tee ./swin_out_new_leak_repeat_leak/split_factor_5.txt
-python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 6 --gpu_idx 1 2>&1 | tee ./swin_out_new_leak_repeat_leak/split_factor_6.txt
-python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 7 --gpu_idx 1 2>&1 | tee ./swin_out_new_leak_repeat_leak/split_factor_7.txt
-python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 8 --gpu_idx 1 2>&1 | tee ./swin_out_new_leak_repeat_leak/split_factor_8.txt
-python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 9 --gpu_idx 1 2>&1 | tee ./swin_out_new_leak_repeat_leak/split_factor_9.txt
-python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 10 --gpu_idx 1 2>&1 | tee .swin_out_new_leak_repeat_leak/split_factor_10.txt
+python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 1 --gpu_idx 0 2>&1 | tee ./swin_out_new_leak_repeat_leak/split_factor_1.txt
+python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 2 --gpu_idx 0 2>&1 | tee ./swin_out_new_leak_repeat_leak/split_factor_2.txt
+python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 3 --gpu_idx 0 2>&1 | tee ./swin_out_new_leak_repeat_leak/split_factor_3.txt
+python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 4 --gpu_idx 0 2>&1 | tee ./swin_out_new_leak_repeat_leak/split_factor_4.txt
+python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 5 --gpu_idx 0 2>&1 | tee ./swin_out_new_leak_repeat_leak/split_factor_5.txt
+python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 6 --gpu_idx 0 2>&1 | tee ./swin_out_new_leak_repeat_leak/split_factor_6.txt
+python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 7 --gpu_idx 0 2>&1 | tee ./swin_out_new_leak_repeat_leak/split_factor_7.txt
+python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 8 --gpu_idx 0 2>&1 | tee ./swin_out_new_leak_repeat_leak/split_factor_8.txt
+python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 9 --gpu_idx 0 2>&1 | tee ./swin_out_new_leak_repeat_leak/split_factor_9.txt
+python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 10 --gpu_idx 0 2>&1 | tee .swin_out_new_leak_repeat_leak/split_factor_10.txt
 
 mkdir ./swin_out_new_leak_repeat_leak_2
-python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 1 --gpu_idx 1 2>&1 | tee ./swin_out_new_leak_repeat_leak_2/split_factor_1.txt
-python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 2 --gpu_idx 1 2>&1 | tee ./swin_out_new_leak_repeat_leak_2/split_factor_2.txt
-python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 3 --gpu_idx 1 2>&1 | tee ./swin_out_new_leak_repeat_leak_2/split_factor_3.txt
-python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 4 --gpu_idx 1 2>&1 | tee ./swin_out_new_leak_repeat_leak_2/split_factor_4.txt
-python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 5 --gpu_idx 1 2>&1 | tee ./swin_out_new_leak_repeat_leak_2/split_factor_5.txt
-python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 6 --gpu_idx 1 2>&1 | tee ./swin_out_new_leak_repeat_leak_2/split_factor_6.txt
-python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 7 --gpu_idx 1 2>&1 | tee ./swin_out_new_leak_repeat_leak_2/split_factor_7.txt
-python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 8 --gpu_idx 1 2>&1 | tee ./swin_out_new_leak_repeat_leak_2/split_factor_8.txt
-python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 9 --gpu_idx 1 2>&1 | tee ./swin_out_new_leak_repeat_leak_2/split_factor_9.txt
-python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 10 --gpu_idx 1 2>&1 | tee .swin_out_new_leak_repeat_leak_2/split_factor_10.txt
+python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 1 --gpu_idx 0 2>&1 | tee ./swin_out_new_leak_repeat_leak_2/split_factor_1.txt
+python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 2 --gpu_idx 0 2>&1 | tee ./swin_out_new_leak_repeat_leak_2/split_factor_2.txt
+python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 3 --gpu_idx 0 2>&1 | tee ./swin_out_new_leak_repeat_leak_2/split_factor_3.txt
+python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 4 --gpu_idx 0 2>&1 | tee ./swin_out_new_leak_repeat_leak_2/split_factor_4.txt
+python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 5 --gpu_idx 0 2>&1 | tee ./swin_out_new_leak_repeat_leak_2/split_factor_5.txt
+python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 6 --gpu_idx 0 2>&1 | tee ./swin_out_new_leak_repeat_leak_2/split_factor_6.txt
+python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 7 --gpu_idx 0 2>&1 | tee ./swin_out_new_leak_repeat_leak_2/split_factor_7.txt
+python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 8 --gpu_idx 0 2>&1 | tee ./swin_out_new_leak_repeat_leak_2/split_factor_8.txt
+python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 9 --gpu_idx 0 2>&1 | tee ./swin_out_new_leak_repeat_leak_2/split_factor_9.txt
+python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 10 --gpu_idx 0 2>&1 | tee .swin_out_new_leak_repeat_leak_2/split_factor_10.txt
