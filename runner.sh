@@ -1,18 +1,18 @@
 #!/bin/bash
 
 ### Testing the different models for sf = 10
-mkdir ./model_testing_leak
-#python3 main.py -b 32 -v kfold_ttv --from_scratch --make_figs -m resnet18 --split_factor 10 --gpu_idx 1 2>&1 | tee ./model_testing_leak/resnet18_sf_10.txt
-#python3 main.py -b 32 -v kfold_ttv --from_scratch --make_figs -m convnext_tiny --split_factor 10 --gpu_idx 1 2>&1 | tee ./model_testing_leak/convnext_tiny_sf_10.txt
-python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 10 --gpu_idx 1 2>&1 | tee ./model_testing_leak/swinv2_base_window12to24_192to384_22kft1k_sf_10.txt
-mkdir ./model_testing_repeat_1_leak
-#python3 main.py -b 32 -v kfold_ttv --from_scratch --make_figs -m resnet18 --split_factor 10 --gpu_idx 1 2>&1 | tee ./model_testing_repeat_1_leak/resnet18_sf_10.txt
-#python3 main.py -b 32 -v kfold_ttv --from_scratch --make_figs -m convnext_tiny --split_factor 10 --gpu_idx 1 2>&1 | tee ./model_testing_repeat_1_leak/convnext_tiny_sf_10.txt
-python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 10 --gpu_idx 1 2>&1 | tee ./model_testing_repeat_1_leak/swinv2_base_window12to24_192to384_22kft1k_sf_10.txt
-mkdir ./model_testing_repeat_2_leak
-#python3 main.py -b 32 -v kfold_ttv --from_scratch --make_figs -m resnet18 --split_factor 10 --gpu_idx 1 2>&1 | tee ./model_testing_repeat_2_leak/resnet18_sf_10.txt
-#python3 main.py -b 32 -v kfold_ttv --from_scratch --make_figs -m convnext_tiny --split_factor 10 --gpu_idx 1 2>&1 | tee ./model_testing_repeat_2_leak/convnext_tiny_sf_10.txt
-python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 10 --gpu_idx 1 2>&1 | tee ./model_testing_repeat_2_leak/swinv2_base_window12to24_192to384_22kft1k_sf_10.txt
+#mkdir ./model_testing_leak
+##python3 main.py -b 32 -v kfold_ttv --from_scratch --make_figs -m resnet18 --split_factor 10 --gpu_idx 1 2>&1 | tee ./model_testing_leak/resnet18_sf_10.txt
+##python3 main.py -b 32 -v kfold_ttv --from_scratch --make_figs -m convnext_tiny --split_factor 10 --gpu_idx 1 2>&1 | tee ./model_testing_leak/convnext_tiny_sf_10.txt
+#python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 10 --gpu_idx 1 2>&1 | tee ./model_testing_leak/swinv2_base_window12to24_192to384_22kft1k_sf_10.txt
+#mkdir ./model_testing_repeat_1_leak
+##python3 main.py -b 32 -v kfold_ttv --from_scratch --make_figs -m resnet18 --split_factor 10 --gpu_idx 1 2>&1 | tee ./model_testing_repeat_1_leak/resnet18_sf_10.txt
+##python3 main.py -b 32 -v kfold_ttv --from_scratch --make_figs -m convnext_tiny --split_factor 10 --gpu_idx 1 2>&1 | tee ./model_testing_repeat_1_leak/convnext_tiny_sf_10.txt
+#python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 10 --gpu_idx 1 2>&1 | tee ./model_testing_repeat_1_leak/swinv2_base_window12to24_192to384_22kft1k_sf_10.txt
+#mkdir ./model_testing_repeat_2_leak
+##python3 main.py -b 32 -v kfold_ttv --from_scratch --make_figs -m resnet18 --split_factor 10 --gpu_idx 1 2>&1 | tee ./model_testing_repeat_2_leak/resnet18_sf_10.txt
+##python3 main.py -b 32 -v kfold_ttv --from_scratch --make_figs -m convnext_tiny --split_factor 10 --gpu_idx 1 2>&1 | tee ./model_testing_repeat_2_leak/convnext_tiny_sf_10.txt
+#python3 main.py -b 8 -g 4 -v kfold_ttv --from_scratch --make_figs -m swinv2_base_window12to24_192to384_22kft1k --split_factor 10 --gpu_idx 1 2>&1 | tee ./model_testing_repeat_2_leak/swinv2_base_window12to24_192to384_22kft1k_sf_10.txt
 
 
 ### Testing the resnet split factors
