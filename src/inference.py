@@ -56,7 +56,7 @@ class Inference:
         for img in stack:
             pred = self.learner.predict(img)
             vote.append(pred)
-        ans = mode([i[0] for i in vote])
+        ans = mode([i for i in vote])
         return ans
 
     def infer_majority(self):

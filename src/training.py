@@ -262,7 +262,7 @@ def kfold_ttv_model(n_splits, img_paths, test_pct):
             aug_df.loc[:, 'is_valid'] = 0
             model_df = pd.concat([aug_df, val_df])
 
-        exp_type = 'ttv_kfold_no_leak'
+        exp_type = 'ttv_kfold_best'
         trainer = train_fastai_model_classification(model_df, count, exp_type=exp_type)
         model = load_learner(
             f'./checkpoints/{exp_type}/models/{args.model}/sf_{args.split_factor}_bs{args.batch_size}_accum{args.grad_accum}/fold_{count}.pkl',
@@ -273,7 +273,7 @@ def kfold_ttv_model(n_splits, img_paths, test_pct):
         # majority vote
         do_inference = Inference(model, args.split_factor, X_test)
         true_labels, pred_labels, api = do_inference.infer_majority()
-        maj_acc = accuracy_score(true_labels, pred_labels)
+        maj_acc = accuracy_score(true_labels, [label[0] for label in pred_labels])
         best_test_majority.append(maj_acc)
         maj_df = pd.DataFrame({'true': true_labels,
                               'preds': pred_labels,
