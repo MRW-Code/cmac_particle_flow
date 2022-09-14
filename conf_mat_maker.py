@@ -5,6 +5,7 @@ import os
 from sklearn.metrics import confusion_matrix
 import numpy as np
 from src.utils import args
+import re
 
 df_list = os.listdir(f'pred_csv/ttv_kfold_best/{args.split_factor}')
 print(df_list)
@@ -16,8 +17,9 @@ for file in df_list:
     if 'single' in file:
         pass
     else:
-        df = pd.read_csv(f'pred_csv/ttv_kfold_best/{args.split_factor}/{file}', index_col=0)
+        df = pd.read_csv(f'pred_csv/ttv_kfold_no_leak_pub/{args.split_factor}/{file}', index_col=0)
         labels = sorted(list(df.true.value_counts().index))
+        df.preds = [re.findall(r"\('(.*)',", x)[0] for x in df.preds]
         conf_mat = confusion_matrix(df.true, df.preds, labels=labels)
         print(conf_mat)
         print(df.true.value_counts())
