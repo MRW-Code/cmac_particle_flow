@@ -1,17 +1,105 @@
 # cmac_particle_flow
+This repository contains the code and data supporting the publication titled "Predicting pharamceutical powder flow from microscopy images using deep learning" published in RSC Digital Discovery (<https://doi.org/10.1039/D2DD00123C>). All work was carried out on a Linux (Ubuntu) machine and as such no guarentee can be offered for system compatibility with other operating systems. Please note that this code is not under active development and as such comes with no guarentee, however should I be made aware of any issues, I will endevour to resolve them as fast as possible. 
 
-Populate the "images" and "external_test_set" as needed. \
-Make empty dir for "aug_images" folder and the "split_test_images". \
-Code will empty files as needed for you so long as they are present. \
-File names as shown and appear in main "cmac_particle_flow" dir. \
-May need to add the empty directories manually. 
+# Data
+The images used for this work are provided in the `images` directory of this repository, with their respective labels being captured by the sub-directories within the `images` parent. 
 
-Train a model: \
-Run ttv_main.py and select the split index and split_factor. \
-split_index = The index of the smaller crop to take for the validation set. \
-split_factor = The divisible factor applied to the width and height. Changed the number/size of the quadrants to train on. \
+# Env Set Up
+```bash
+# Install venv and dependencies
+sudo apt-get install python3-venv
+# Create working directory
+mkdir {chosen working directory}
+cd chosen_dir
+# Make virtual environment
+python3 -m venv env_name
+# Activate virtual environment
+source env_name/bin/activate
+# install packages
+pip install -r requirements.txt
+```
 
-Inference: \
-Run do_inference.py and pass the learner you wish to use. \
-Make sure learner is the .pkl NOT the .pth version. \
-Now takes the split_factor variable. Make sure this is the same as the model used so the same preprocessing is applied to test set. 
+# Running the code
+To use the program, run:
+```
+python3 ttv_main.py [arguments]
+```
+
+## List of Command Line Arguments:
+
+1. **--gpu_idx** : Specifies the GPU index.
+    - Choices: 0, 1, 2, 3, 4, 5
+    - Default: 0
+    ```
+    --gpu_idx 2
+    ```
+
+2. **-s/--split_factor** : The factor by which the data will be split.
+    - Choices: 0 to 59 (inclusive)
+    - Default: 3
+    ```
+    -s 5
+    ```
+
+3. **-b/--batch_size** : The size of the batch for processing.
+    - Choices: 0 to 999 (inclusive)
+    - Default: 8
+    ```
+    -b 32
+    ```
+
+4. **--no_augs** : If present, disables augmentations.
+    - Default: False
+    ```
+    --no_augs
+    ```
+
+5. **--make_figs** : If present, generates figures.
+    - Default: False
+    ```
+    --make_figs
+    ```
+
+6. **--from_scratch** : If present, starts training from scratch.
+    ```
+    --from_scratch
+    ```
+
+7. **-v/--cv_method** : The cross-validation method to use.
+    - Choices: kfold, crop_fold, split_first, ttv, kfold_ttv
+    - Default: split_first
+    ```
+    -v kfold
+    ```
+
+8. **-g/--grad_accum** : Specifies the gradient accumulation.
+    - Choices: 0 to 49 (inclusive)
+    - Default: 1
+    ```
+    -g 4
+    ```
+
+9. **-m/--model** : Specifies the model type.
+    - Choices: 
+        - convnext_tiny_in22k
+        - resnet18
+        - convnext_tiny
+        - convnext_small
+        - resnet50
+        - vit_tiny_patch16_384
+        - swinv2_tiny_window16_256
+        - swinv2_cr_tiny_384
+        - vit_small_patch16_384
+        - vit_small_patch32_384
+        - swinv2_cr_tiny_384
+        - swinv2_base_window12to24_192to384_22kft1k
+    - Default: resnet18
+    ```
+    -m resnet50
+    ```
+
+10. **--no_resize** : If present, disables image resizing.
+    ```
+    --no_resize
+    ```
+    
